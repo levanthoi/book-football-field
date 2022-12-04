@@ -1,0 +1,7 @@
+/functions/mock/**
+/scripts
+/config
+/static
+server.js
+jest.*.js
+/RichFileManager
