@@ -1,0 +1,51 @@
+// .container {
+//     padding: 0 3rem;
+// }
+@use './partials/variables.scss' as v;
+
+@font-face {
+    font-family: tisa;
+    src: url("/static/fonts/TisaSansPro-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: tisa !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+ol,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+}
+
+.btn {
+    padding: .4rem 1.5rem !important;
+    border-radius: 8px !important;
+    border: none;
+    outline: none !important;
+}
+
+.btn-primary {
+    background: v.$light-green !important;
+    color: v.$white !important;
+}
+
+.btn-secondary {
+    border: 1px solid v.$light-green !important;
+    color: v.$black !important;
+    background: v.$white !important;
+}

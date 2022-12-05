@@ -5,13 +5,19 @@
   "scripts": {
     "dev": "nodemon server.js .env",
     "build": "cross-env NODE_OPTIONS=--max-old-space-size=6192 NODE_ENV=production next build",
-    "start": "nodemon server.js",
-    "lint": "eslint . --ext js,jsx"
+    "start": "NODE_ENV=production node server.js",
+    "lint": "eslint . --ext js,jsx",
+    "lint-fix": "eslint ./layouts/* -c .eslintrc.js --fix --ext js,jsx"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.1",
+    "@fortawesome/free-brands-svg-icons": "^6.2.1",
+    "@fortawesome/free-solid-svg-icons": "^6.2.1",
+    "@fortawesome/react-fontawesome": "^0.2.0",
     "@reduxjs/toolkit": "^1.9.1",
     "aos": "^3.0.0-beta.6",
     "body-parser": "^1.20.1",
+    "bootstrap": "^5.2.3",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",
@@ -25,9 +31,11 @@
     "nprogress": "^0.2.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.40.0",
     "react-toastify": "^9.1.1",
     "redux": "^4.2.0",
-    "redux-saga": "^1.2.1"
+    "redux-saga": "^1.2.1",
+    "sass": "^1.56.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",

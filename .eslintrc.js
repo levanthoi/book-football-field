@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     commonjs: true,
     es6: true,
+    jest: true,
   },
   parser: '@babel/eslint-parser',
   extends: ['eslint:recommended', 'airbnb', 'next', 'prettier'],
@@ -21,16 +22,42 @@ module.exports = {
     react: {
       version: 'detect',
     },
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
+      },
+    },
   },
   rules: {
     'arrow-body-style': 'off',
     'react/react-in-jsx-scope': 'off',
+    'react/jsx-props-no-spreading': 'off',
     'react/jsx-filename-extension': [
       1,
       {
         extensions: ['.js', '.jsx'],
       },
     ],
+    'react/function-component-definition': [
+      'error',
+      {
+        namedComponents: ['function-declaration', 'arrow-function'],
+        unnamedComponents: 'arrow-function',
+      },
+    ],
+    'react/jsx-fragments': 'off',
+    // 'import/no-unresolved': [2, { ignore: ['^@/', '^umi/'] }],
+    // 'import/no-extraneous-dependencies': [
+    //   2,
+    //   {
+    //     optionalDependencies: true,
+    //     devDependencies: ['**/tests/**.js', '/mock/**.js', '**/**.test.js'],
+    //   },
+    // ],
+    'import/no-unresolved': 'off',
+    'import/extensions': 'off',
+    'import/prefer-default-export': 'off',
     'react/display-name': 1,
   },
 };

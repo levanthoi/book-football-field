@@ -1,15 +1,12 @@
-import Head from "next/head";
-import Image from "next/image";
-import styles from "../styles/Home.module.css";
+import Head from 'next/head';
+import WebLayout from 'layouts/WebLayout';
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-      </Head>
-
-      <h1>index</h1>
+    <div>
+      <WebLayout title="Đặt sân bóng đá online lớn nhất Hà Nội">
+        <h1>index</h1>
+      </WebLayout>
     </div>
   );
 }

@@ -1,0 +1,73 @@
+@use './partials/variables.scss' as v;
+
+.header {
+    color: v.$black;
+    background: v.$white;
+    max-height: 100px;
+    padding: .5rem 0;
+    box-shadow: 2px 5px 5px rgba(159, 147, 147, 0.5);
+
+    // display: flex;
+    .left {
+        display: flex;
+        align-items: center;
+        gap: .7rem;
+
+        .logo {}
+
+        .text-logo {}
+    }
+
+    .list_menu {
+        display: flex;
+        gap: .5rem;
+        align-items: center;
+        justify-content: space-around;
+
+        .item_menu a {
+            cursor: pointer;
+            color: v.$black;
+            text-decoration: none;
+            transition: all 0.4s;
+        }
+
+        .item_menu a:hover {
+            color: v.$light-green;
+        }
+    }
+
+    .right {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 1.5rem;
+    }
+}
+
+// footer
+.footer {
+    background-color: #f0f0f0;
+    color: v.$black;
+
+    // height:
+    .left {
+        .title {
+            border-bottom: 1px solid v.$light-green;
+        }
+
+        .item_left {
+            margin-top: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: .5rem;
+        }
+
+    }
+
+    .copyright {
+        text-align: center;
+        padding: .5rem 0;
+
+    }
+}
