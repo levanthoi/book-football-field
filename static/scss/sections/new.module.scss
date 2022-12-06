@@ -1,0 +1,25 @@
+.new_card {
+    .card_content {
+        text-align: left;
+        padding-left: 10px;
+
+        .name {
+            padding: 15px 0;
+           h5 {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
+           }
+
+           .description {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 3;
+           }
+        }
+    }
+}

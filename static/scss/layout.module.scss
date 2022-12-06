@@ -54,6 +54,7 @@
 
 // footer
 .footer {
+    margin-top: 70px;
     background-color: #f0f0f0;
     color: v.$black;
 
@@ -62,6 +63,9 @@
         .title {
             padding: 10px 0;
             border-bottom: 1px solid v.$light-green;
+            h4 {
+                padding-left: 8px;
+            }
         }
 
         ul {
@@ -81,7 +85,6 @@
     .center {
         margin-left: 10px;
         h4 {
-            text-align: center;
             padding-top: 18px;
         }
         .list_images {
@@ -102,15 +105,21 @@
 
     .right {
         margin-left: 14px;
-        .text {
-            text-align: center;
+        .contact {
             padding-top: 18px;
+        }
+        .plugin_page {
+            padding-top: 12px;
         }
     }
 
     .copyright {
         text-align: center;
-        padding: 1.5rem 0;
-
+        padding: 2.5rem;
+        font-weight: bold;
+        color: v.$light-green;
     }
 }
+
+
+
