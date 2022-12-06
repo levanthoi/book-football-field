@@ -1,0 +1,47 @@
+@use '../partials/variables.scss' as v;
+
+
+.banner {
+    overflow-x: hidden;
+    min-height: 26.7rem;
+    position: relative;
+    .banner_img {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        left: 0;
+        width: 100%;
+        background-image: url('../../images/banner.png');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        z-index: 2;
+    }
+    .overlay {
+        position: absolute;
+        top: 0;
+        height: 100%;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.48);
+        z-index: 3;
+    }
+    .banner_title {
+        position: absolute;
+        z-index: 10;
+        max-width: 830px;
+        white-space: nowrap;
+        left: 50%;
+        top: 100px;
+        transform: translateX(-50%);
+        text-align: center;
+        color: v.$white;
+        .title {
+            font-weight: bold;
+        }
+
+        .suggest {
+            font-size: 1.1rem;
+        }
+    }
+}
