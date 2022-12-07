@@ -1,27 +1,30 @@
 import React from 'react';
 import styles from 'static/scss/sections/pitchCard.module.scss';
 
-export default function PitchCard() {
+export default function PitchCard({ data }) {
   return (
-    <div className={`${styles.pitch_card} col`}>
-      <div className={styles.card_image}>
-        <img src="../../static/images/pitchfb.jfif" />
+    <div className={`card ${styles.pitch_card} col`}>
+      <div className="card-image">
+        <img src={data.image} />
       </div>
       <div className={styles.card_content}>
         <div className={styles.name}>
-          <h5>Sân bóng Đại học Thủy Lợi</h5>
+          <h5>{data.name}</h5>
           {/* Element Sao */}
         </div>
         <div className={styles.type}>
-          <p>Loại sân: 7</p>
+          <p>Loại sân: {data.typePitch}</p>
         </div>
         <div className={styles.price}>
           <p>
-            Giá: <span>200000vnđ - 400000vnđ</span>
+            Giá:{' '}
+            <span>
+              {data.priceMin}vnđ - {data.priceMax}vnđ
+            </span>
           </p>
         </div>
       </div>
-      <div className={styles.card_button}>
+      <div className="card-button">
         <button className="btn btn-primary">Đặt sân</button>
       </div>
     </div>

@@ -7,8 +7,18 @@
 
     .offer_booking {
         margin-top: 50px;
+        >div {
+            margin-top: 30px;
+        }
         h2 {
-            margin-bottom: 20px;
+            font-weight: bold;
+            display: inline-flex;
+            align-items: center;
+            >img {
+                width: 18px;
+                height: 18px;
+                margin: 0 20px;
+            }
         }
     }
 
@@ -107,6 +117,9 @@
 
     .best_news {
         margin-top: 70px;
+        >div {
+            margin-top: 30px;
+        }
     }
 
 
