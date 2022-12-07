@@ -32,6 +32,10 @@ p {
     margin: 0;
 }
 
+.active {
+    color: v.$light-green;
+}
+
 .btn {
     padding: .4rem 1.5rem !important;
     border-radius: 8px !important;

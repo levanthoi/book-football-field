@@ -1,0 +1,35 @@
+@use './partials/variables.scss' as v;
+
+.breadcrumb {
+    height: 70px;
+    display: flex;
+    background: v.$dark-green;
+
+    .box {
+        position: relative;
+
+        .banner {
+            display: inline-block;
+        }
+
+        .list_item {
+            display: flex;
+            align-items: center;
+            gap: .3rem;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 5rem;
+
+            .breadcrumb_item a {
+                color: v.$black;
+                cursor: pointer;
+            }
+
+            .breadcrumb_active {
+                color: v.$white;
+            }
+        }
+    }
+
+}
