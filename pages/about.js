@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import BreadCrumb from 'component/BreadCrumb';
-// import ListCategory from 'component/ListCategory';
 import WebLayout from 'layouts/WebLayout';
 import { dataCategories } from 'data/data';
 import cate from 'static/scss/listCategory.module.scss';
