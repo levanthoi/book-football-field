@@ -6,7 +6,7 @@ const Footer = ({ styles }) => {
   return (
     <div className={styles.footer}>
       <div className="container">
-        <div className="row flex-nowrap">
+        <div className="row flex-nowrap ">
           <div className={`col-4 ${styles.left}`}>
             <div className={styles.title}>
               <div className="logo d-flex align-items-center">
@@ -21,7 +21,7 @@ const Footer = ({ styles }) => {
               </li>
               <li className={styles.item_left}>
                 <FontAwesomeIcon icon={faPhone} />
-                <span className={styles.subtitle}>0123456789</span>
+                <span className={styles.subtitle}>(+84) 988866688</span>
               </li>
               <li className={styles.item_left}>
                 <FontAwesomeIcon icon={faEnvelope} />
@@ -34,7 +34,7 @@ const Footer = ({ styles }) => {
             </ul>
           </div>
           <div className={`col-4 ${styles.center}`}>
-            <h4 className={styles.text}>Hình ảnh đẹp</h4>
+            <h4 className={styles.title}>Hình ảnh đẹp</h4>
             <div className={styles.list_images}>
               <ul className="row">
                 <li className="col-4">
@@ -46,8 +46,6 @@ const Footer = ({ styles }) => {
                 <li className="col-4">
                   <img src="../../static/images/fbwc.jfif" />
                 </li>
-              </ul>
-              <ul className="row">
                 <li className="col-4">
                   <img src="../../static/images/ffworldcup.jfif" />
                 </li>
@@ -57,8 +55,6 @@ const Footer = ({ styles }) => {
                 <li className="col-4">
                   <img src="../../static/images/pitchfb2.jfif" />
                 </li>
-              </ul>
-              <ul className="row">
                 <li className="col-4">
                   <img src="../../static/images/fbwc.jfif" />
                 </li>
@@ -72,7 +68,19 @@ const Footer = ({ styles }) => {
             </div>
           </div>
           <div className={`col-4 ${styles.right}`}>
-            <h4 className={styles.text}>Kết nối với chúng tôi</h4>
+            <h4 className={styles.contact}>Kết nối với chúng tôi</h4>
+            <div className={styles.plugin_page}>
+              <iframe
+                src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffootball24honline"
+                style={{ border: 'none', overflow: 'hidden', width: '500px', height: '200px' }}
+                scrolling="no"
+                frameBorder="0"
+                allowFullScreen={true}
+                data-hide-cover={false}
+                data-show-facepile={false}
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+              ></iframe>
+            </div>
           </div>
         </div>
         <div className={styles.copyright}>@2022 Copyright By Nhóm 13 - Ca 2 - 63CNTT1</div>

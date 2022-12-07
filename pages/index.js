@@ -2,10 +2,12 @@ import Head from 'next/head';
 import WebLayout from 'layouts/WebLayout';
 import Banner from 'component/sections/Banner';
 import styles from 'static/scss/pages/home.module.scss';
-import Slider from 'component/sections/Slider';
+import SliderCustom from 'component/sections/SliderCustom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleDot, faCalendarDays, faCreditCard } from '@fortawesome/free-solid-svg-icons';
 import PitchCard from 'component/sections/PitchCard';
+import New from 'component/sections/New';
+import { dataPitch, dataNews } from 'data/data';
 export default function Home() {
   return (
     <div>
@@ -14,12 +16,13 @@ export default function Home() {
           <Banner title="Đặt Sân Bóng Chưa Bao Giờ Dễ Dàng Hơn Thế" site="Đống Đa" />
           <div className="container text-center">
             <div className={styles.offer_booking}>
-              <h2>Đề xuất các sân bóng</h2>
+              <h2>
+                <img src="../static/images/soccer.png" />
+                Đề xuất các sân bóng
+                <img src="../static/images/soccer.png" />
+              </h2>
               <div className="row">
-                <PitchCard />
-                <PitchCard />
-                <PitchCard />
-                <PitchCard />
+                <SliderCustom data={dataPitch} />
               </div>
             </div>
             <div className={`row ${styles.score}`}>
@@ -91,6 +94,11 @@ export default function Home() {
                 Tin tức mới nhất
                 <div></div>
               </h2>
+              <div className="row flex-nowrap">
+                {dataNews.map((item) => {
+                  return <New data={item} key={item.id} />;
+                })}
+              </div>
             </div>
           </div>
         </div>
