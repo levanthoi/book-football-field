@@ -20,7 +20,7 @@ const WebLayout = ({ children, title }) => {
         <title>{title}</title>
       </Head>
       <Header styles={styles} />
-      <main>{children}</main>
+      <main className={styles.site_content_page}>{children}</main>
       <Footer styles={styles} />
     </React.Fragment>
   );

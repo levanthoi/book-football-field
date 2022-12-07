@@ -1,11 +1,13 @@
 @use './partials/variables.scss' as v;
 
 .header {
+    width: 100%;
     color: v.$black;
     background: v.$white;
     max-height: 100px;
     padding: .5rem 0;
     box-shadow: 2px 5px 5px rgba(159, 147, 147, 0.5);
+    overflow: hidden;
 
     // display: flex;
     .left {
@@ -44,6 +46,12 @@
     }
 }
 
+// Content main page
+.site_content_page {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 // footer
 .footer {
     background-color: #f0f0f0;
@@ -52,22 +60,57 @@
     // height:
     .left {
         .title {
+            padding: 10px 0;
             border-bottom: 1px solid v.$light-green;
         }
 
-        .item_left {
-            margin-top: .5rem;
-            display: flex;
-            align-items: center;
-            justify-content: flex-start;
-            gap: .5rem;
+        ul {
+            .item_left {
+                margin-top: 1rem;
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                gap: .5rem;
+            }
         }
 
+
+
+    }
+
+    .center {
+        margin-left: 10px;
+        h4 {
+            text-align: center;
+            padding-top: 18px;
+        }
+        .list_images {
+            margin-top: 16px;
+            ul {
+                li {
+                    margin: 5px 0;
+                    padding: 0 2px;
+                    img {
+                        height: 80px;
+                        width: 100%;
+                    }
+                }
+            }
+        }
+    }
+
+
+    .right {
+        margin-left: 14px;
+        .text {
+            text-align: center;
+            padding-top: 18px;
+        }
     }
 
     .copyright {
         text-align: center;
-        padding: .5rem 0;
+        padding: 1.5rem 0;
 
     }
 }
