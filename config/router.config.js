@@ -7,8 +7,9 @@
 module.exports.routes = {
   // web
   web: [
-    { path: "/", name: "home", component: "index" },
-    { path: "/about", name: "about", component: "about" },
+    { path: '/', name: 'home', component: 'index' },
+    { path: '/about', name: 'about', component: 'about' },
+    { path: '/book', name: 'book', component: 'book' },
   ],
   dashboard: [],
 };

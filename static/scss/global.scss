@@ -10,8 +10,15 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: poppins;
+    src: url("/static/fonts/Poppins/Poppins-Regular.ttf");
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
-    font-family: tisa !important;
+    font-family: poppins !important;
 
     &::-webkit-scrollbar {
         width: 4px;
@@ -102,6 +109,15 @@ p {
     border: 1px solid v.$light-green !important;
     color: v.$black !important;
     background: v.$white !important;
+}
+
+.btn-filter {
+    background: v.$dark-green !important;
+    color: v.$white !important;
+}
+
+.number {
+    font-family: tisa;
 }
 
 .slick-slider {
