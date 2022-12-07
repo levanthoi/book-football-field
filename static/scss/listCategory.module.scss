@@ -1,0 +1,13 @@
+@use './partials/variables.scss' as v;
+
+.list_category {
+    padding: 12px 0;
+    display: flex;
+
+    .category_item {
+        text-transform: uppercase;
+        cursor: pointer;
+        padding: 0 8px;
+        border-right: 1px solid v.$gray;
+    }
+}
