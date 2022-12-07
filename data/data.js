@@ -66,6 +66,7 @@ export const dataPitch = [
     id: 1,
     name: 'Sân bóng Đại học Thủy Lợi',
     typePitch: '7',
+    quantity: 2,
     priceMin: 200000,
     priceMax: 400000,
     vote: 5,
@@ -73,12 +74,13 @@ export const dataPitch = [
     statusOffer: false,
     address: 'Cổng sau Đại học Thủy Lợi',
     description: '',
-    image: '../../static/images/pitchfb.jfif',
+    image: 'https://cdn.malaebapp.com/images/stadium/375/small',
   },
   {
     id: 2,
     name: 'Sân bóng Đại học Y Hà Nội',
     typePitch: '7',
+    quantity: 2,
     priceMin: 300000,
     priceMax: 400000,
     vote: 5,
@@ -86,25 +88,27 @@ export const dataPitch = [
     statusOffer: false,
     address: 'Đại học Y Hà Nội',
     description: '',
-    image: '../../static/images/pitchfb2.jfif',
+    image: 'https://cdn.malaebapp.com/images/stadium/78/small',
   },
   {
     id: 3,
     name: 'Sân bóng Thượng Đình',
     typePitch: '7',
+    quantity: 2,
     priceMin: 500000,
     priceMax: 700000,
-    vote: 5,
+    vote: 1,
     countOffer: 29,
     statusOffer: false,
     address: 'Nguyễn Trãi Thanh Xuân Hà Nội',
     description: '',
-    image: '../../static/images/pitchfb3.jfif',
+    image: 'https://cdn.malaebapp.com/images/stadium/9/small',
   },
   {
     id: 4,
     name: 'Sân bóng Mỹ Đình',
     typePitch: '7',
+    quantity: 2,
     priceMin: 200000,
     priceMax: 400000,
     vote: 5,
@@ -112,12 +116,13 @@ export const dataPitch = [
     statusOffer: false,
     address: 'Mỹ Đình',
     description: '',
-    image: '../../static/images/pitchfb.jfif',
+    image: 'https://cdn.malaebapp.com/images/stadium/9/small',
   },
   {
     id: 5,
     name: 'Sân bóng Thượng Đình',
     typePitch: '7',
+    quantity: 3,
     priceMin: 500000,
     priceMax: 700000,
     vote: 5,
@@ -125,12 +130,13 @@ export const dataPitch = [
     statusOffer: false,
     address: 'Nguyễn Trãi Thanh Xuân Hà Nội',
     description: '',
-    image: '../../static/images/pitchfb3.jfif',
+    image: 'https://cdn.malaebapp.com/images/stadium/375/small',
   },
   {
     id: 6,
     name: 'Sân bóng Thượng Đình',
     typePitch: '7',
+    quantity: 2,
     priceMin: 500000,
     priceMax: 700000,
     vote: 5,
@@ -138,7 +144,7 @@ export const dataPitch = [
     statusOffer: false,
     address: 'Nguyễn Trãi Thanh Xuân Hà Nội',
     description: '',
-    image: '../../static/images/pitchfb3.jfif',
+    image: 'https://cdn.malaebapp.com/images/stadium/932/small',
   },
 ];
 
@@ -178,5 +184,31 @@ export const dataNews = [
     description:
       'Sau trận đấu giữa Brazil và Hàn Quốc, HLV Tite không tiếc lời khen cậu học trò Neymar trong khi HLV Bento của Hàn Quốc quyết định từ chức.',
     image: '../../static/images/new3.jpg',
+  },
+];
+
+export const matchDuration = [
+  {
+    id: 1,
+    time: '60',
+  },
+  {
+    id: 2,
+    time: '90',
+  },
+  {
+    id: 3,
+    time: '120',
+  },
+];
+
+export const pitchSizes = [
+  {
+    id: 11,
+    title: '7 v 7',
+  },
+  {
+    id: 12,
+    title: '11 v 11',
   },
 ];

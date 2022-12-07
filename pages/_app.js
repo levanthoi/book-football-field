@@ -3,6 +3,7 @@ import NProgress from 'nprogress';
 import 'static/scss/partials/reset.scss';
 import 'static/scss/css/bootstrap.css';
 import 'static/scss/global.scss';
+import 'static/scss/css/datepicker.css';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
