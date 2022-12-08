@@ -10,6 +10,7 @@ module.exports.routes = {
     { path: '/', name: 'home', component: 'index' },
     { path: '/about', name: 'about', component: 'about' },
     { path: '/book', name: 'book', component: 'book' },
+    { path: '/blog', name: 'blog', component: 'blog' },
   ],
   dashboard: [],
 };

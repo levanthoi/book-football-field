@@ -9,6 +9,7 @@ import PitchCard from 'component/sections/PitchCard';
 import New from 'component/sections/New';
 import { dataPitch, dataNews } from 'data/data';
 export default function Home() {
+  const sliceDataNew = dataNews.slice(0, 4);
   return (
     <div>
       <WebLayout title="Đặt sân bóng đá online lớn nhất Hà Nội">
@@ -95,8 +96,12 @@ export default function Home() {
                 <div></div>
               </h2>
               <div className="row flex-nowrap">
-                {dataNews.map((item) => {
-                  return <New data={item} key={item.id} />;
+                {sliceDataNew?.map((item) => {
+                  return (
+                    <div className="col-3" key={item.id}>
+                      <New data={item} hasButton={true} pointer={false} />
+                    </div>
+                  );
                 })}
               </div>
             </div>

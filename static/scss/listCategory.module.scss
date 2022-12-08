@@ -1,9 +1,9 @@
 @use './partials/variables.scss' as v;
 
 .list_category {
-    padding: 12px 0;
+    padding: 14px 0;
     display: flex;
-
+    border-bottom: 2px solid #9091925c;
     .category_item {
         text-transform: uppercase;
         cursor: pointer;
