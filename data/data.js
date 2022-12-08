@@ -20,7 +20,7 @@ export const dataMenu = [
   {
     id: 4,
     title: 'Tin tức',
-    urlSlug: 'blogs',
+    urlSlug: 'blog',
     children: null,
   },
   {
@@ -57,6 +57,25 @@ export const dataCategories = [
       {
         id: 14,
         title: 'Điều khoản',
+      },
+    ],
+  },
+  {
+    id: 2,
+    categoryId: 4,
+    children: [
+      {
+        id: 10,
+        title: 'Tin trong nước',
+        content: '',
+      },
+      {
+        id: 11,
+        title: 'Tin quốc tế',
+      },
+      {
+        id: 12,
+        title: 'Tin khuyến mãi',
       },
     ],
   },
@@ -178,6 +197,42 @@ export const dataNews = [
   },
   {
     id: 4,
+    name: 'Brazil đại thắng Hàn Quốc: HLV Tite ca ngợi Neymar, thầy cũ Ronaldo từ chức',
+    countRead: 20,
+    content: '',
+    description:
+      'Sau trận đấu giữa Brazil và Hàn Quốc, HLV Tite không tiếc lời khen cậu học trò Neymar trong khi HLV Bento của Hàn Quốc quyết định từ chức.',
+    image: '../../static/images/new3.jpg',
+  },
+  {
+    id: 5,
+    name: 'Trực tiếp bóng đá Morocco - Tây Ban Nha: Hàng xóm đại chiến, lịch sử chờ sang trang (World Cup)',
+    countRead: 20,
+    content: '',
+    description:
+      '(Morocco - Tây Ban Nha, 22h, 6/12, vòng 1/8 World Cup 2022) Đây sẽ là trận đấu hứa hẹn căng thẳng vì lịch sử giữa hai nước lẫn hai đội tuyển.',
+    image: '../../static/images/new1.jpg',
+  },
+  {
+    id: 6,
+    name: 'Ronaldo dễ mất băng đội trưởng, phải đá dự bị trận tranh vé tứ kết World Cup?',
+    countRead: 20,
+    content: '',
+    description:
+      'Cristiano Ronaldo đang muốn tỏa sáng ở trận đấu vòng 1/8 World Cup sắp tới. Nhưng mới đây, HLV Fernando Santos vừa lên tiếng việc có thể tước băng đội trưởng ĐT Bồ Đào Nha của CR7.',
+    image: '../../static/images/new2.jpg',
+  },
+  {
+    id: 7,
+    name: 'Trực tiếp bóng đá Pháp - Ba Lan: Lewandowski ghi bàn danh dự (World Cup) (Hết giờ)',
+    countRead: 20,
+    content: '',
+    description:
+      '(Vòng 1/8) Lewandowski thực hiện thành công quả phạt đền giúp Ba Lan có bàn danh dự.',
+    image: '../../static/images/new4.jpg',
+  },
+  {
+    id: 8,
     name: 'Brazil đại thắng Hàn Quốc: HLV Tite ca ngợi Neymar, thầy cũ Ronaldo từ chức',
     countRead: 20,
     content: '',

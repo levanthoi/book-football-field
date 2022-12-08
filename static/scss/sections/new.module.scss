@@ -11,6 +11,7 @@
             display: -webkit-box;
             -webkit-box-orient: vertical;
             -webkit-line-clamp: 2;
+            transition: all 0.3s ease-in-out;
            }
 
            .description {
