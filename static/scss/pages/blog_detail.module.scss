@@ -1,0 +1,55 @@
+@use '../partials/variables.scss' as v;
+.content_main {
+    padding: 0 20px;
+
+    .image {
+        margin: 10px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        img {
+            width: 90%;
+            height: auto;
+        }
+    }
+    .title {
+        font-size: 2rem;
+        font-weight: bold;
+        line-height: 2.6rem;
+    }
+    h5 {
+        padding: 10px 0;
+        font-size: 1.4rem;
+        font-weight: bold;
+        line-height: 1.8rem;
+    }
+    ul {
+        padding-left: 20px;
+        li {
+            padding-left: 20px;
+            position: relative;
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 50%;
+                transform: translateY(-50%);
+                width: 8px;
+                height: 8px;
+                background: v.$black;
+                border-radius: 50%;
+            }
+        }
+    }
+
+    p {
+        font-size: 1.1rem;
+        line-height: 1.8rem;
+    }
+
+    b {
+        font-size: 1.1rem;
+        line-height: 1.8rem;
+        padding-right: 2px;
+    }
+}

@@ -60,7 +60,7 @@ const book = () => {
         <link rel="stylesheet" href="static/scss/css/datepicker.css" />
       </Head> */}
       <BreadCrumb name1="Đặt sân" />
-      <Banner title="Đặt sân bóng thật dễ dàng" site="Đống Đa" />
+      <Banner title="Đặt sân bóng thật dễ dàng" site="Đống Đa" hasFormSearch={false} />
       <div className={styles.book}>
         <div className="container">
           <div className="row">

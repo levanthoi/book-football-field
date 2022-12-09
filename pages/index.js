@@ -10,11 +10,16 @@ import New from 'component/sections/New';
 import { dataPitch, dataNews } from 'data/data';
 export default function Home() {
   const sliceDataNew = dataNews.slice(0, 4);
+
   return (
     <div>
       <WebLayout title="Đặt sân bóng đá online lớn nhất Hà Nội">
         <div className={styles.site_home_page}>
-          <Banner title="Đặt Sân Bóng Chưa Bao Giờ Dễ Dàng Hơn Thế" site="Đống Đa" />
+          <Banner
+            title="Đặt Sân Bóng Chưa Bao Giờ Dễ Dàng Hơn Thế"
+            site="Đống Đa"
+            hasFormSearch={true}
+          />
           <div className="container text-center">
             <div className={styles.offer_booking}>
               <h2>

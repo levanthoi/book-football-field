@@ -3,18 +3,20 @@ import BreadCrumb from 'component/BreadCrumb';
 import ListCategory from 'component/ListCategory';
 import WebLayout from 'layouts/WebLayout';
 import New from 'component/sections/New';
-import cate from 'static/scss/listCategory.module.scss';
+import BlogSideBar from 'component/sections/BlogSideBar';
 import styles from 'static/scss/pages/blog.module.scss';
 import { dataCategories, dataNews } from 'data/data';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 const blog = () => {
   // const [active, setActive] = useState(0);
+  const router = useRouter();
 
-  const sliceDataNewOfften = dataNews.slice(0, 4);
-  const sliceDataNewBest = dataNews.slice(4, 8);
-  const handleClick = (e) => {
-    console.log(e);
+  const handleClick = (id) => {
+    router.push({
+      pathname: '/blog/[blogId]',
+      query: { blogId: id },
+    });
   };
   return (
     <WebLayout title="Tin tức - Booking Football Pitch">
@@ -39,8 +41,8 @@ const blog = () => {
             <div className="row">
               {dataNews?.map((item) => {
                 return (
-                  <div className="col-4" key={item?.id}>
-                    <New data={item} hasButton={false} handleClick={handleClick} pointer={true} />
+                  <div className="col-4" key={item?.id} onClick={() => handleClick(item?.id)}>
+                    <New data={item} hasButton={false} pointer={true} />
                   </div>
                 );
               })}
@@ -54,49 +56,8 @@ const blog = () => {
               </ul>
             </div>
           </div>
-          <div className={`${styles.sidebar} col-4`}>
-            <div className={styles.best_often}>
-              <div className={styles.title}>
-                <h3>Tin xem nhiều</h3>
-              </div>
-              <div className={styles.list_new}>
-                {sliceDataNewOfften?.map((item) => {
-                  return (
-                    <div className={`${styles.new_item} row`} key={item?.id}>
-                      <div className={`${styles.new_image} col-4`}>
-                        <img src={item.image} alt={item.name} />
-                      </div>
-                      <div className={`${styles.new_title} col-8`}>
-                        <Link href="/" legacyBehavior>
-                          <a>{item.name}</a>
-                        </Link>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
-            <div className={styles.best_new}>
-              <div className={styles.title}>
-                <h3>Tin mới nhất</h3>
-              </div>
-              <div className={styles.list_new}>
-                {sliceDataNewBest?.map((item) => {
-                  return (
-                    <div className={`${styles.new_item} row`} key={item?.id}>
-                      <div className={`${styles.new_image} col-4`}>
-                        <img src={item.image} alt={item.name} />
-                      </div>
-                      <div className={`${styles.new_title} col-8`}>
-                        <Link href="/" legacyBehavior>
-                          <a>{item.name}</a>
-                        </Link>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            </div>
+          <div className="col-4">
+            <BlogSideBar />
           </div>
         </div>
       </div>

@@ -26,58 +26,5 @@
         }
     }
 
-    .sidebar {
-
-        .title {
-            padding-bottom: 10px;
-            border-bottom: 1px solid #9091924a;
-            h3 {
-                text-transform: uppercase;
-                font-size: 1.5rem;
-            }
-        }
-
-        .list_new {
-            margin-left: 12px;
-            .new_item {
-                padding: 16px 0;
-                border-bottom: 1px solid #9091924a;
-                cursor: pointer;
-                &:hover {
-                    .new_title {
-                        a {
-                            color: v.$light-green;
-                        }
-                    }
-                }
-                .new_image {
-                    padding-left: 0;
-                    img {
-                        height: 86px;
-                    }
-                }
-
-                .new_title {
-                    line-height: 1.4rem;
-                    padding-left: 0;
-                    a {
-                        font-size: 1.1rem;
-                        color: v.$black;
-                        transition: all 0.3s ease-in-out;
-                        overflow: hidden;
-                        text-overflow: ellipsis;
-                        display: -webkit-box;
-                        -webkit-box-orient: vertical;
-                        -webkit-line-clamp: 3;
-                        
-                    }
-                }
-            }
-        }
-
-
-        .best_new {
-            margin-top: 30px;
-        }
-    }
+    
 }
