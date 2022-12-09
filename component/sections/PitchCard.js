@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from 'static/scss/sections/pitchCard.module.scss';
+import { totalTypePitch } from 'utils/utils';
 
 export default function PitchCard({ data }) {
   return (
@@ -13,7 +14,7 @@ export default function PitchCard({ data }) {
           {/* Element Sao */}
         </div>
         <div className={styles.type}>
-          <p>Loại sân: {data.typePitch}</p>
+          <p>Số sân: {totalTypePitch(data.typePitch)}</p>
         </div>
         <div className={styles.price}>
           <p>
@@ -25,7 +26,9 @@ export default function PitchCard({ data }) {
         </div>
       </div>
       <div className="card-button">
-        <button className="btn btn-primary">Đặt sân</button>
+        <button type="button" className="btn btn-primary">
+          Đặt sân
+        </button>
       </div>
     </div>
   );

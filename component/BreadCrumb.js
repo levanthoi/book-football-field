@@ -18,7 +18,8 @@ const BreadCrumb = ({ name1, name2 }) => {
               <a href="/">Trang chủ</a>
             </li>
             {name1 && <FontAwesomeIcon icon={faAngleRight} />}
-            <li className={name2 ? styles.breadcrumb_item : styles.breadcrumb_active}>{name1}</li>
+            <li className={styles.breadcrumb_item}>{name1}</li>
+            {/* <li className={name2 ? styles.breadcrumb_item : styles.breadcrumb_active}>{name1}</li> */}
             {name2 && <FontAwesomeIcon icon={faAngleRight} />}
             {name2 && <li className={styles.breadcrumb_item}>{name2}</li>}
           </ul>

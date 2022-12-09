@@ -9,7 +9,7 @@ const Header = ({ styles }) => {
           <div className="col-3">
             <div className={styles.left}>
               <div className={styles.logo}>
-                <img src="static/images/logo.png" alt="logo" />
+                <img src="/static/images/logo.png" alt="logo" />
               </div>
               <h3 className={styles.text_logo}>BFP</h3>
             </div>

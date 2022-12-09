@@ -17,3 +17,11 @@ export const formatNumber = (value) => {
   }
   return `${prefix}${result}${list[1] ? `.${list[1]}` : ''}`;
 };
+
+// export const findRouter = () => {
+
+// }
+
+export const totalTypePitch = (typePitch) => {
+  return typePitch?.length;
+};
