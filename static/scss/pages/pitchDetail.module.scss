@@ -1,0 +1,75 @@
+@use '../partials/variables.scss' as v;
+
+.detailPitch {
+    .rate {
+        .star {
+            color: v.$orange;
+        }
+
+        .address {
+            color: v.$light-green;
+        }
+
+    }
+
+    .introStad {
+
+        // display: flex;
+        .badge {
+            padding: .25rem;
+            margin: 0 .5rem;
+            border: 1px solid v.$gray;
+            border-radius: .25rem;
+            font-size: 0.75rem;
+            cursor: pointer;
+        }
+
+        .slide_image {
+            padding-top: 1rem;
+        }
+    }
+
+    .line {
+        width: 10rem;
+        height: .25rem;
+        background-color: v.$light-green;
+        border-radius: .5rem 20%;
+    }
+
+    .map {
+        padding: 1rem 0;
+
+        iframe {
+            width: 100%;
+            height: 300px;
+        }
+    }
+
+    .facilities {
+        border: 1px solid #C2C9D1;
+        border-radius: 8px;
+        padding: 0.5rem;
+        min-width: 140px;
+        transition: all linear .2s;
+    }
+}
+
+.dateSlot {
+    border: 1px solid v.$gray;
+    border-radius: 8px;
+    padding: .5rem .1rem;
+
+    button {
+        font-size: 12px;
+        // padding-top: 0.7rem;
+        color: v.$light-green;
+        font-weight: bold;
+        background: transparent;
+    }
+
+    p {
+        font-size: 13px;
+        font-weight: medium;
+        color: v.$light-green;
+    }
+}

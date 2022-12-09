@@ -11,6 +11,7 @@ module.exports.routes = {
     { path: '/about', name: 'about', component: 'about' },
     { path: '/book', name: 'book', component: 'book' },
     { path: '/blog', name: 'blog', component: 'blog' },
+    { path: '/book/:id', name: 'detail', component: 'PitchDetail' },
     { path: '/blog/:slug', name: 'blog_detail', component: 'blog_detail' },
   ],
   dashboard: [],

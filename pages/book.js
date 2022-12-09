@@ -6,8 +6,9 @@ import { matchDuration, pitchSizes, dataPitch } from 'data/data';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import Image from 'next/image';
-import { formatNumber } from 'utils/utils';
+import { formatNumber, totalTypePitch } from 'utils/utils';
 import { Pagination } from 'antd';
+import { useRouter } from 'next/router';
 
 // import Head from 'next/head'
 const PAGE_SIZE = 5;
@@ -38,6 +39,7 @@ const book = () => {
   const [togglePitch, setTogglePitch] = useState(-99);
   const [total, setTotal] = useState(dataPitch?.length || 6);
   const [current, setCurrent] = useState(1);
+  const router = useRouter();
 
   const onChangeTime = (newTime) => {
     console.log(`New time selected - ${newTime.hours}:${newTime.minutes}`);
@@ -160,13 +162,15 @@ const book = () => {
                   <div className="row">
                     <div className="col-4">
                       <div className={styles.image}>
-                        <img src={item.image} alt={item?.name} />
+                        <a href={`/book/${item.id}`}>
+                          <img src={item.image} alt={item?.name} />
+                        </a>
                       </div>
                     </div>
                     <div className="col-8">
                       <div className={styles.info}>
                         <h5 className={styles.title}>
-                          {item?.name}
+                          <a href={`/book/${item.id}`}>{item?.name}</a>
                           <span className={`number ${styles.stars}`}>
                             <FontAwesomeIcon icon={faStar} />
                             {item?.vote}/5
@@ -188,11 +192,13 @@ const book = () => {
                           </span>
                         </div>
                         <div className="d-flex gap-2">
-                          2&nbsp;sân
-                          <span className={styles.badge}>
-                            <img src="static/images/soccer.png" alt="ảnh bóng" width={18} />
-                            &nbsp; {item?.typePitch} v {item?.typePitch}
-                          </span>
+                          {totalTypePitch(item?.typePitch)}&nbsp;sân
+                          {item?.typePitch?.map((child) => (
+                            <span key={child?.id} className={styles.badge}>
+                              <img src="/static/images/soccer.png" alt="ảnh bóng" width={18} />
+                              &nbsp; {child?.type}
+                            </span>
+                          ))}
                         </div>
                         <div className="mt-2 mb-1 row">
                           <div className="col">
@@ -200,6 +206,7 @@ const book = () => {
                               type="button"
                               className="btn btn-primary"
                               style={{ width: 'inherit' }}
+                              onClick={() => router.push(`/book/${item.id}`)}
                             >
                               Xem chi tiết
                             </button>

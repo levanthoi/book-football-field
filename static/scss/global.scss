@@ -18,7 +18,7 @@
 }
 
 body {
-    font-family: poppins !important;
+    // font-family: poppins !important;
 
     &::-webkit-scrollbar {
         width: 4px;
@@ -56,10 +56,15 @@ p {
 
 .active {
     color: v.$light-green;
+
     &.dot {
         color: v.$white !important;
         background-color: v.$dark-green;
     }
+}
+
+.subtitle {
+    color: v.$gray;
 }
 
 .card {
@@ -72,12 +77,14 @@ p {
 
     &.pointer {
         cursor: pointer;
+
         &:hover {
             h5 {
                 color: v.$light-green;
             }
         }
     }
+
     .card-image {
         height: 176px;
         // overflow: hidden;
@@ -136,6 +143,7 @@ p {
     .slick-slide {
         margin: 0 12px;
     }
+
     .slick-track {
         display: inline-flex;
         align-items: center;

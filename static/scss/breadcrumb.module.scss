@@ -26,9 +26,12 @@
                 cursor: pointer;
             }
 
-            .breadcrumb_active {
+            .breadcrumb_item:last-child {
                 color: v.$white;
             }
+
+            // .breadcrumb_active {
+            // }
         }
     }
 

@@ -84,10 +84,39 @@ export const dataPitch = [
   {
     id: 1,
     name: 'Sân bóng Đại học Thủy Lợi',
-    typePitch: '7',
-    quantity: 2,
+    typePitch: [
+      {
+        id: 100,
+        type: '7 v 7',
+        children: [
+          {
+            id: 1000,
+            time: '8:00',
+            price: '200000',
+          },
+          {
+            id: 1001,
+            time: '12:00',
+            price: '300000',
+          },
+          {
+            id: 1002,
+            time: '17:30',
+            price: '250000',
+          },
+        ],
+      },
+      {
+        id: 101,
+        type: '11 v 11',
+        children: null,
+      },
+    ],
+    // quantity: 2,
     priceMin: 200000,
     priceMax: 400000,
+    timeStart: '',
+    timeEnd: '',
     vote: 5,
     countOffer: 29,
     statusOffer: false,
@@ -98,10 +127,17 @@ export const dataPitch = [
   {
     id: 2,
     name: 'Sân bóng Đại học Y Hà Nội',
-    typePitch: '7',
-    quantity: 2,
+    typePitch: [
+      {
+        id: 200,
+        type: '7v7',
+      },
+    ],
+    // quantity: 2,
     priceMin: 300000,
     priceMax: 400000,
+    timeStart: '',
+    timeEnd: '',
     vote: 5,
     countOffer: 29,
     statusOffer: false,
@@ -112,10 +148,25 @@ export const dataPitch = [
   {
     id: 3,
     name: 'Sân bóng Thượng Đình',
-    typePitch: '7',
-    quantity: 2,
+    typePitch: [
+      {
+        id: 300,
+        type: '7v7',
+      },
+      {
+        id: 301,
+        type: '7v7',
+      },
+      {
+        id: 302,
+        type: '11v11',
+      },
+    ],
+    // quantity: 2,
     priceMin: 500000,
     priceMax: 700000,
+    timeStart: '',
+    timeEnd: '',
     vote: 1,
     countOffer: 29,
     statusOffer: false,
@@ -126,10 +177,17 @@ export const dataPitch = [
   {
     id: 4,
     name: 'Sân bóng Mỹ Đình',
-    typePitch: '7',
-    quantity: 2,
+    typePitch: [
+      {
+        id: 400,
+        type: '7v7',
+      },
+    ],
+    // quantity: 2,
     priceMin: 200000,
     priceMax: 400000,
+    timeStart: '',
+    timeEnd: '',
     vote: 5,
     countOffer: 29,
     statusOffer: false,
@@ -140,10 +198,17 @@ export const dataPitch = [
   {
     id: 5,
     name: 'Sân bóng Thượng Đình',
-    typePitch: '7',
-    quantity: 3,
+    typePitch: [
+      {
+        id: 500,
+        type: '7v7',
+      },
+    ],
+    // quantity: 3,
     priceMin: 500000,
     priceMax: 700000,
+    timeStart: '',
+    timeEnd: '',
     vote: 5,
     countOffer: 29,
     statusOffer: false,
@@ -154,10 +219,21 @@ export const dataPitch = [
   {
     id: 6,
     name: 'Sân bóng Thượng Đình',
-    typePitch: '7',
-    quantity: 2,
+    typePitch: [
+      {
+        id: 600,
+        type: '7v7',
+      },
+      {
+        id: 601,
+        type: '7v7',
+      },
+    ],
+    // quantity: 2,
     priceMin: 500000,
     priceMax: 700000,
+    timeStart: '',
+    timeEnd: '',
     vote: 5,
     countOffer: 29,
     statusOffer: false,
