@@ -1,0 +1,94 @@
+@use './partials/variables.scss' as v;
+
+.form_login,
+.form_forget {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: #fff;
+    width: 480px;
+    height: 600px;
+    border-radius: 10px;
+    box-shadow: rgba(67, 71, 85, 0.27) 0px 0px 0.25em, rgba(90, 125, 188, 0.05) 0px 0.25em 1em;
+
+    
+    h3 {
+        text-align: center;
+        padding: 46px 0 28px 0;
+        font-weight: bold;
+    }
+    form {
+        padding: 10px 30px;
+        .field {
+            display: flex;
+            align-items: center;
+            height: 40px;
+            border: 1px solid #fff;
+            margin-bottom: 14px;
+            svg {
+                width: 18px;
+                height: 18px;
+                fill: v.$light-green;
+
+                path {
+                    stroke: v.$light-green;
+                    fill: v.$light-green;
+                }
+            }
+            input {
+                width: 100%;
+                padding: 5px;
+                font-family: Poppins;
+                border: none;
+                outline: none;
+                background: transparent;
+                color: #444;
+            }
+        }
+
+        .link {
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: v.$light-green;
+            text-decoration: underline;
+            font-size: 1.1rem;
+        }
+
+        .button_login {
+            width: 100%;
+            margin: 10px 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        p {
+            font-size: 1.1rem;
+            text-align: center;
+        }
+    }
+
+    .button_close {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+
+        svg {
+            width: 28px;
+            height: 28px;
+            cursor: pointer;
+
+            path {
+                fill: v.$light-green;
+            }
+        }
+    }
+}
+
+.form_forget {
+    height: 280px !important;
+}
