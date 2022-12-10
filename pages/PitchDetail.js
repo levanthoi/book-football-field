@@ -10,7 +10,7 @@ import {
   faAngleRight,
 } from '@fortawesome/free-solid-svg-icons';
 import dynamic from 'next/dynamic';
-import { totalTypePitch } from 'utils/utils';
+import { formatNumber, totalTypePitch } from 'utils/utils';
 
 const WebLayout = dynamic(() => import('layouts/WebLayout.js'), {
   ssr: true,
@@ -18,7 +18,7 @@ const WebLayout = dynamic(() => import('layouts/WebLayout.js'), {
 });
 
 const BreadCrumb = dynamic(() => import('component/BreadCrumb'), {
-  ssr: true,
+  ssr: false,
   loading: () => null,
 });
 
@@ -31,7 +31,10 @@ const PitchDetail = () => {
   //   const router = useRouter();
   const { query } = useRouter();
   const [date, setDate] = useState(new Date());
-  const [toggleDuration, setToggleDuration] = useState(0);
+  const [toggleDuration, setToggleDuration] = useState(-99);
+  const [togglePitch, setTogglePitch] = useState(-99);
+  const [timePitch, setTimePitch] = useState(-99);
+  const [totalPrice, setTotalPrice] = useState(0);
   const [showModal, setShowModal] = useState(false);
   const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
   const todayDate = new Date();
@@ -55,11 +58,22 @@ const PitchDetail = () => {
     console.log(`New date selected - ${newDate.toString()}`);
     setDate(newDate);
   };
+  // const handleChange = (e, item) => {
+  //   console.log('e', e);
+  //   console.log('item', item);
+  // };
+  const handleClick = (e, item) => {
+    if (e.target.checked) setTotalPrice((prePrice) => Number(prePrice) + Number(item.price));
+    else if (!e.target.checked && Number(totalPrice) > 0)
+      setTotalPrice((prePrice) => Number(prePrice) - Number(item.price));
+    // console.log('e', e.target.checked);
+    // console.log('item', item);
+  };
   //   console.log('router', router);
   //   console.log('useRouter()', query.id);
   //   console.log('dataPitch', dataPitch);
   const data = dataPitch?.find((item) => Number(item?.id) === Number(query.id));
-  console.log('dataDetail', data);
+  // console.log('dataDetail', data);
   return (
     <WebLayout>
       <BreadCrumb name1="Đặt sân" name2={data?.name} />
@@ -122,13 +136,40 @@ const PitchDetail = () => {
                 style={{ width: '100%' }}
               />
             </div>
-            <p className="fw-bold py-4">Thời lượng đá</p>
+            <p className="fw-bold py-2">Chọn sân bóng</p>
+            <div className="row">
+              {data?.typePitch?.map((pitch, index) => (
+                <div key={pitch?.id} className="col">
+                  <button
+                    type="button"
+                    className={`w-100 ${styles.pitch} ${
+                      togglePitch === index ? 'btn-filter' : 'btn-secondary'
+                    }`}
+                    onClick={() => setTogglePitch(index)}
+                  >
+                    {/* <img src="/static/images/soccer.png" width={15} alt="img" /> */}
+                    <span className="mx-2"> {pitch?.type}</span>
+                    <span>Sân {index + 1}</span>
+                  </button>
+                </div>
+              ))}
+            </div>
+            {/* <select className="form-select" aria-label="Default select example">
+              <option selected>Vui lòng chọn ...</option>
+              {data?.typePitch?.map((pitch, index) => (
+                <option value={pitch?.id} key={pitch?.id}>
+                  {pitch?.type}
+                </option>
+              ))}
+            </select> */}
+            <p className="fw-bold py-2">Thời lượng đá</p>
             <div className="row">
               {matchDuration?.map((item, index) => (
                 <div key={item?.id} className="col-4">
                   <button
                     type="button"
                     className={toggleDuration === index ? 'btn btn-filter' : 'btn btn-secondary'}
+                    style={{ width: '100%' }}
                     onClick={() => setToggleDuration(index)}
                   >
                     <span className="number">{item?.time}</span> {item?.time && 'Phút'}
@@ -266,12 +307,13 @@ const PitchDetail = () => {
                     <p className="fw-bold mb-1">Thời gian</p>
                     <div className="row">
                       {matchDuration?.map((item, index) => (
-                        <div key={item?.id} className="col-4">
+                        <div key={item?.id} className="col">
                           <button
                             type="button"
                             className={
                               toggleDuration === index ? 'btn btn-filter' : 'btn btn-secondary'
                             }
+                            style={{ width: '100%' }}
                             onClick={() => setToggleDuration(index)}
                           >
                             <span className="number">{item?.time}</span>
@@ -282,146 +324,88 @@ const PitchDetail = () => {
                     </div>
                   </div>
                 </div>
-                <p className="fw-bold">Chọn vị trí còn sẵn</p>
-                <div className="d-none overflow-auto overflowSlots d-md-flex mb-3">
+                <p className="fw-bold py-2">Chọn vị trí còn sẵn</p>
+                <div className="row overflow-auto mb-3">
                   {data?.typePitch?.map((item, index) => (
-                    <div key={item.id} className="me-3 w-100">
-                      <div className="availableSlots p-2">
-                        <img src="/static/images/soccer.png" width={30} alt="img" />
-                        <span className="textG mx-2"> {item?.type}</span>
+                    <div key={item.id} className="col">
+                      <button
+                        type="button"
+                        className={`p-2 w-100 ${styles.pitch} ${
+                          togglePitch === index ? 'btn btn-filter' : 'btn btn-secondary'
+                        }`}
+                        onClick={() => {
+                          setTogglePitch(index);
+                          setTotalPrice(0);
+                        }}
+                      >
+                        {/* <img src="/static/images/soccer.png" width={15} alt="img" /> */}
+                        <span className="mx-2 number"> {item?.type}</span>
                         <span>Sân {index + 1}</span>
-                      </div>
-                      {/* <div>
-                        <div className="row px-3">
-                          <div className="col-md p-1">
-                            <p className="mb-2 textSmall">Buổi sáng</p>
-                            <button
-                              className="btn 
-                                                  
-                                                  
-                                                  
-                                                      btnTimeS w-100 p-3 mb-2 
-                                                        
-                                                  "
-                            >
-                              <p className="fw-bold mb-1">
-                                06:30 PM <br />
-                                20 BHD
-                              </p>
-                            </button>
-                            <button
-                              className="btn 
-                                                  
-                                                  
-                                                  
-                                                      btnTimeS w-100 p-3 mb-2 
-                                                        
-                                                  "
-                            >
-                              <p className="fw-bold mb-1">
-                                07:00 PM <br />
-                                20 BHD
-                              </p>
-                            </button>
-                            <button
-                              className="btn 
-                                                  
-                                                  
-                                                  
-                                                      btnTimeS w-100 p-3 mb-2 
-                                                        
-                                                  "
-                            >
-                              <p className="fw-bold mb-1">
-                                07:30 PM <br />
-                                20 BHD
-                              </p>
-                            </button>
-                            <button
-                              className="btn 
-                                                  
-                                                  
-                                                  
-                                                      btnTimeS w-100 p-3 mb-2 
-                                                        
-                                                  "
-                            >
-                              <p className="fw-bold mb-1">
-                                08:00 PM <br />
-                                20 BHD
-                              </p>
-                            </button>
-                            <button
-                              className="btn 
-                                                  
-                                                  
-                                                  
-                                                      btnTimeS w-100 p-3 mb-2 
-                                                        
-                                                  "
-                            >
-                              <p className="fw-bold mb-1">
-                                08:30 PM <br />
-                                20 BHD
-                              </p>
-                            </button>
-                            <button
-                              className="btn 
-                                                  
-                                                  
-                                                  
-                                                      btnTimeS w-100 p-3 mb-2 
-                                                        
-                                                  "
-                            >
-                              <p className="fw-bold mb-1">
-                                09:00 PM <br />
-                                20 BHD
-                              </p>
-                            </button>
-                            <button
-                              className="btn 
-                                                  
-                                                  
-                                                  
-                                                      btnTimeS w-100 p-3 mb-2 
-                                                        
-                                                  "
-                            >
-                              <p className="fw-bold mb-1">
-                                09:30 PM <br />
-                                20 BHD
-                              </p>
-                            </button>
-                            <button
-                              className="btn 
-                                                  
-                                                  
-                                                  
-                                                      btnTimeS w-100 p-3 mb-2 
-                                                        
-                                                  "
-                            >
-                              <p className="fw-bold mb-1">
-                                10:00 PM <br />
-                                20 BHD
-                              </p>
-                            </button>
-                          </div>
+                      </button>
+                    </div>
+                  ))}
+                </div>
+                <div className="row">
+                  {data?.typePitch[togglePitch]?.children?.map((item, ind) => (
+                    <div className="col-4" key={item?.id}>
+                      <label style={{ width: '100%' }}>
+                        <input
+                          type="checkbox"
+                          name={item?.price}
+                          // onChange={(e) => handleChange(e, item)}
+                          onClick={(e) => handleClick(e, item)}
+                          id=""
+                          className="position-absolute"
+                          style={{ left: '-100vw' }}
+                        />
+                        <div
+                          // className={`p-3 mb-2 w-100 ${styles.pitch} ${
+                          //   timePitch === ind ? 'btn btn-primary' : 'btn btn-secondary'
+                          // }`}
+                          className={`p-3 mb-2 w-100 ${styles.pitch} btn btn-secondary
+                          }`}
+                          // style={{height: "80%"}}
+                          // onClick={() => setTimePitch(ind)}
+                        >
+                          <p className="fw-bold mb-1 number">
+                            {item?.time} <br />
+                            {formatNumber(item?.price)}&nbsp;VNĐ
+                          </p>
                         </div>
-                      </div> */}
+                      </label>
+                      {/* <input
+                        type="checkbox"
+                        name=""
+                        id=""
+                        className="w-100 h-100 position-absolute"
+                      />
+                      <input type="text" value="" id="a" className="w-100 h-100" />
+                      <label htmlFor="a" className="fw-bold mb-1 number position-absolute">
+                        {item?.time} <br />
+                        {formatNumber(item?.price)}&nbsp;VNĐ
+                      </label> */}
                     </div>
                   ))}
                 </div>
               </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal">
-                  Close
-                </button>
-                <button type="button" className="btn btn-primary">
-                  Save changes
-                </button>
-              </div>
+              {Number(totalPrice) > 0 && (
+                <div className="modal-footer">
+                  <div className="row w-100 justify-content-center">
+                    <div className="col-lg-8">
+                      <button
+                        type="button"
+                        className="btn btn-filter w-100 fw-bolder my-2 text-uppercase"
+                      >
+                        Đặt ngay (
+                        <span className="float-right">
+                          <span className="amount mx-1">{formatNumber(totalPrice)}</span>
+                        </span>
+                        VNĐ)
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </div>

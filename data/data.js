@@ -104,11 +104,47 @@ export const dataPitch = [
             time: '17:30',
             price: '250000',
           },
+          {
+            id: 1003,
+            time: '16:00',
+            price: '350000',
+          },
+          {
+            id: 1004,
+            time: '19:00',
+            price: '150000',
+          },
         ],
       },
       {
         id: 101,
+        type: '7 v 7',
+        children: [
+          {
+            id: 1010,
+            time: '8:30',
+            price: '200000',
+          },
+          {
+            id: 1011,
+            time: '12:30',
+            price: '300000',
+          },
+          {
+            id: 1012,
+            time: '18:30',
+            price: '250000',
+          },
+        ],
+      },
+      {
+        id: 102,
         type: '11 v 11',
+        children: null,
+      },
+      {
+        id: 103,
+        type: '5 v 5',
         children: null,
       },
     ],
