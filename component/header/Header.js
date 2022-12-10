@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { dataMenu } from 'data/data';
+import { ShowFormContext } from 'layouts/WebLayout';
 
 const Header = ({ styles }) => {
+  const { setShowLogin, setShowSignUp } = useContext(ShowFormContext);
   return (
     <div className={styles.header}>
       <div className="container">
@@ -24,10 +26,10 @@ const Header = ({ styles }) => {
             </div>
           </div>
           <div className={`col-3 ${styles.right}`}>
-            <button type="button" className="btn btn-secondary">
+            <button type="button" className="btn btn-secondary" onClick={() => setShowSignUp(true)}>
               Đăng kí
             </button>
-            <button type="button" className="btn btn-primary">
+            <button type="button" className="btn btn-primary" onClick={() => setShowLogin(true)}>
               Đăng nhập
             </button>
           </div>
