@@ -65,16 +65,21 @@ export const dataCategories = [
     categoryId: 4,
     children: [
       {
-        id: 10,
+        idCategory: 40,
+        title: 'Tất cả tin tức',
+        content: '',
+      },
+      {
+        idCategory: 41,
         title: 'Tin trong nước',
         content: '',
       },
       {
-        id: 11,
+        idCategory: 42,
         title: 'Tin quốc tế',
       },
       {
-        id: 12,
+        idCategory: 43,
         title: 'Tin khuyến mãi',
       },
     ],
@@ -289,6 +294,7 @@ export const dataNews = [
     description:
       '(Morocco - Tây Ban Nha, 22h, 6/12, vòng 1/8 World Cup 2022) Đây sẽ là trận đấu hứa hẹn căng thẳng vì lịch sử giữa hai nước lẫn hai đội tuyển.',
     image: '../../static/images/new1.jpg',
+    idCategory: 42,
   },
   {
     id: 2,
@@ -299,6 +305,7 @@ export const dataNews = [
     description:
       'Cristiano Ronaldo đang muốn tỏa sáng ở trận đấu vòng 1/8 World Cup sắp tới. Nhưng mới đây, HLV Fernando Santos vừa lên tiếng việc có thể tước băng đội trưởng ĐT Bồ Đào Nha của CR7.',
     image: '../../static/images/new2.jpg',
+    idCategory: 42,
   },
   {
     id: 3,
@@ -309,6 +316,7 @@ export const dataNews = [
     description:
       '(Vòng 1/8) Lewandowski thực hiện thành công quả phạt đền giúp Ba Lan có bàn danh dự.',
     image: '../../static/images/new4.jpg',
+    idCategory: 42,
   },
   {
     id: 4,
@@ -319,6 +327,7 @@ export const dataNews = [
     description:
       'Sau trận đấu giữa Brazil và Hàn Quốc, HLV Tite không tiếc lời khen cậu học trò Neymar trong khi HLV Bento của Hàn Quốc quyết định từ chức.',
     image: '../../static/images/new3.jpg',
+    idCategory: 43,
   },
   {
     id: 5,
@@ -329,6 +338,7 @@ export const dataNews = [
     description:
       '(Morocco - Tây Ban Nha, 22h, 6/12, vòng 1/8 World Cup 2022) Đây sẽ là trận đấu hứa hẹn căng thẳng vì lịch sử giữa hai nước lẫn hai đội tuyển.',
     image: '../../static/images/new1.jpg',
+    idCategory: 41,
   },
   {
     id: 6,
@@ -339,6 +349,7 @@ export const dataNews = [
     description:
       'Cristiano Ronaldo đang muốn tỏa sáng ở trận đấu vòng 1/8 World Cup sắp tới. Nhưng mới đây, HLV Fernando Santos vừa lên tiếng việc có thể tước băng đội trưởng ĐT Bồ Đào Nha của CR7.',
     image: '../../static/images/new2.jpg',
+    idCategory: 43,
   },
   {
     id: 7,
@@ -349,6 +360,7 @@ export const dataNews = [
     description:
       '(Vòng 1/8) Lewandowski thực hiện thành công quả phạt đền giúp Ba Lan có bàn danh dự.',
     image: '../../static/images/new4.jpg',
+    idCategory: 41,
   },
   {
     id: 8,
@@ -359,6 +371,7 @@ export const dataNews = [
     description:
       'Sau trận đấu giữa Brazil và Hàn Quốc, HLV Tite không tiếc lời khen cậu học trò Neymar trong khi HLV Bento của Hàn Quốc quyết định từ chức.',
     image: '../../static/images/new3.jpg',
+    idCategory: 43,
   },
 ];
 
