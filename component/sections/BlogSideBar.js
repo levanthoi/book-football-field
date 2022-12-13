@@ -10,10 +10,13 @@ export default function BlogSideBar() {
   const sliceDataNewBest = dataNews?.slice(4, 8);
 
   const handleClick = (id) => {
-    router.push({
-      pathname: '/blog/[blogId]',
-      query: { blogId: id },
-    });
+    if (id !== Number(router.query.slug)) {
+      router.push({
+        pathname: '/blog/[blogId]',
+        query: { blogId: id },
+      });
+    }
+    return;
   };
   return (
     <div className={`${styles.sidebar}`}>

@@ -4,10 +4,13 @@ import { useRouter } from 'next/router';
 export default function New({ data, hasButton, pointer }) {
   const router = useRouter();
   const handleClick = (id) => {
-    router.push({
-      pathname: '/blog/[blogId]',
-      query: { blogId: id },
-    });
+    if (id !== Number(router.query.slug)) {
+      router.push({
+        pathname: '/blog/[blogId]',
+        query: { blogId: id },
+      });
+    }
+    return;
   };
   return (
     <div
@@ -15,18 +18,18 @@ export default function New({ data, hasButton, pointer }) {
       onClick={handleClick}
     >
       <div className="card-image">
-        <img src={data.image} />
+        <img src={data?.image} />
       </div>
       <div className={styles.card_content}>
         <div className={styles.name}>
-          <h5>{data.name}</h5>
+          <h5>{data?.name}</h5>
           {/* Element Sao */}
-          <p className={styles.description}>{data.description}</p>
+          <p className={styles.description}>{data?.description}</p>
         </div>
       </div>
       {hasButton ? (
         <div className="card-button">
-          <button className="btn btn-primary" onClick={() => handleClick(data.id)}>
+          <button className="btn btn-primary" onClick={() => handleClick(data?.id)}>
             Xem chi tiết
           </button>
         </div>
