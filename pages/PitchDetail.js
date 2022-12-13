@@ -89,7 +89,6 @@ const PitchDetail = () => {
     arrows: false,
     lazyLoad: true,
   };
-  // console.log('dataDetail', data);
   return (
     <WebLayout>
       <BreadCrumb name1="Đặt sân" name2={data?.name} />
