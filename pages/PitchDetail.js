@@ -27,6 +27,11 @@ const DatePicker = dynamic(() => import('sassy-datepicker'), {
   loading: () => null,
 });
 
+const SliderCustom = dynamic(() => import('component/sections/SliderCustom'), {
+  ssr: true,
+  loading: () => null,
+});
+
 const PitchDetail = () => {
   //   const router = useRouter();
   const { query } = useRouter();
@@ -73,6 +78,17 @@ const PitchDetail = () => {
   //   console.log('useRouter()', query.id);
   //   console.log('dataPitch', dataPitch);
   const data = dataPitch?.find((item) => Number(item?.id) === Number(query.id));
+
+  const settings = {
+    autoplay: true,
+    dots: false,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    infinite: true,
+    arrows: false,
+    lazyLoad: true,
+  };
   // console.log('dataDetail', data);
   return (
     <WebLayout>
@@ -116,10 +132,11 @@ const PitchDetail = () => {
                 <b>Giờ mở cửa</b>&nbsp; 7:00 AM - 8:00 PM
               </p>
               <div className={styles.slide_image}>
-                <img
-                  src="https://cdn.malaebapp.com/images/stadium/543/777bc7eb/large"
-                  alt="sân bóng đá"
-                />
+                <SliderCustom settings={settings}>
+                  {data?.imgSlider?.map((image, index) => (
+                    <img key={image} src={image} alt="" />
+                  ))}
+                </SliderCustom>
               </div>
             </div>
           </div>
@@ -143,7 +160,7 @@ const PitchDetail = () => {
                   <button
                     type="button"
                     className={`w-100 ${styles.pitch} ${
-                      togglePitch === index ? 'btn-filter' : 'btn-secondary'
+                      togglePitch === index ? 'btn-primary' : 'btn-secondary'
                     }`}
                     onClick={() => setTogglePitch(index)}
                   >
@@ -168,7 +185,7 @@ const PitchDetail = () => {
                 <div key={item?.id} className="col-4">
                   <button
                     type="button"
-                    className={toggleDuration === index ? 'btn btn-filter' : 'btn btn-secondary'}
+                    className={toggleDuration === index ? 'btn btn-primary' : 'btn btn-secondary'}
                     style={{ width: '100%' }}
                     onClick={() => setToggleDuration(index)}
                   >
@@ -179,7 +196,7 @@ const PitchDetail = () => {
             </div>
             <button
               type="button"
-              className="btn btn-primary mt-4 text-uppercase"
+              className="btn btn-filter mt-4 text-uppercase"
               style={{ width: '100%' }}
               onClick={() => setShowModal(!showModal)}
             >
@@ -311,7 +328,7 @@ const PitchDetail = () => {
                           <button
                             type="button"
                             className={
-                              toggleDuration === index ? 'btn btn-filter' : 'btn btn-secondary'
+                              toggleDuration === index ? 'btn btn-primary' : 'btn btn-secondary'
                             }
                             style={{ width: '100%' }}
                             onClick={() => setToggleDuration(index)}
@@ -331,7 +348,7 @@ const PitchDetail = () => {
                       <button
                         type="button"
                         className={`p-2 w-100 ${styles.pitch} ${
-                          togglePitch === index ? 'btn btn-filter' : 'btn btn-secondary'
+                          togglePitch === index ? 'btn btn-primary' : 'btn btn-secondary'
                         }`}
                         onClick={() => {
                           setTogglePitch(index);

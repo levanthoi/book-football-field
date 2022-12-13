@@ -10,7 +10,7 @@ const Footer = ({ styles }) => {
           <div className={`col-4 ${styles.left}`}>
             <div className={styles.title}>
               <div className="logo d-flex align-items-center">
-                <img src="static/images/logo.png" alt="logo" />
+                <img src="/static/images/logo.png" alt="logo" />
                 <h4 className={styles.text}>Booking Football Pitch</h4>
               </div>
             </div>

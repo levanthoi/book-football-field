@@ -1,9 +1,13 @@
 import React, { useContext } from 'react';
 import { dataMenu } from 'data/data';
 import { ShowFormContext } from 'layouts/WebLayout';
+import { useRouter } from 'next/router';
 
 const Header = ({ styles }) => {
   const { setShowLogin, setShowSignUp } = useContext(ShowFormContext);
+  const router = useRouter();
+  const { asPath } = router;
+  console.log('router', router);
   return (
     <div className={styles.header}>
       <div className="container">
@@ -19,8 +23,13 @@ const Header = ({ styles }) => {
           <div className="col-6 m-auto">
             <div className={styles.list_menu}>
               {dataMenu?.map((menu) => (
-                <li key={menu.id} className={styles.item_menu}>
-                  <a href={`/${menu?.urlSlug}`}>{menu?.title}</a>
+                <li key={menu.id} className={`${styles.item_menu}`}>
+                  <a
+                    href={`/${menu?.urlSlug}`}
+                    className={`${asPath === `/${menu?.urlSlug}` ? 'active' : ''}`}
+                  >
+                    {menu?.title}
+                  </a>
                 </li>
               ))}
             </div>

@@ -4,10 +4,15 @@
     padding: 14px 0;
     display: flex;
     border-bottom: 2px solid #9091925c;
+
     .category_item {
         text-transform: uppercase;
         cursor: pointer;
         padding: 0 8px;
-        border-right: 1px solid v.$gray;
+
+        // border-right: 1px solid v.$gray;
+        a {
+            color: v.$black;
+        }
     }
 }
