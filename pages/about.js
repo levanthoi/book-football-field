@@ -5,24 +5,44 @@ import { dataCategories } from 'data/data';
 import cate from 'static/scss/listCategory.module.scss';
 import styles from 'static/scss/about.module.scss';
 
+import dynamic from 'next/dynamic';
+
+// const ListCategory = dynamic(() => import('component/ListCategory'), {
+//   ssr: true,
+//   loading: () => null,
+// });
+
 const about = () => {
   const [active, setActive] = useState(0);
+  const urlParent = dataCategories[0]?.category?.urlSlug;
+  const handleClick = (e, pos, item) => {
+    e.preventDefault();
+    setActive(pos);
+    router.push(`/${urlParent}/${item?.urlSlug}`);
+  };
   console.log(active);
   return (
     <WebLayout title="Giới thiệu về chúng tôi">
       <BreadCrumb name1="Giới thiệu" />
       <div className="container">
-        <ul className={cate.list_category}>
+        {/* <ListCategory data={dataCategories[0]} /> */}
+        {/* <ul className={cate.list_category}>
           {dataCategories[0]?.children?.map((item, index) => (
             <li
               key={item?.id}
-              className={`${active === index ? 'active' : ''} ${cate.category_item}`}
-              onClick={() => setActive(index)}
+              className={`${cate.category_item}`}
+              // onClick={() => setActive(index)}
             >
-              {item?.title}
+              <a
+                href={`/${urlParent}/${item?.urlSlug}`}
+                className={`${active === index ? 'active' : ''} `}
+                onClick={(e) => handleClick(e, index, item)}
+              >
+                {item?.title}
+              </a>
             </li>
           ))}
-        </ul>
+        </ul> */}
       </div>
       <div className={styles.about}>
         <div className="container">

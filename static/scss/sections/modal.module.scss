@@ -1,0 +1,42 @@
+@use '../partials/variables.scss' as v;
+
+
+input:checked~.pitch {
+    background: v.$light-green !important;
+    color: v.$white !important;
+}
+
+.pitch {
+    background: v.$gradient-gray;
+    border-radius: 8px;
+    cursor: pointer;
+
+    span:first-child {
+        font-weight: 500 !important;
+    }
+
+    span {
+        display: block;
+        font-size: 14px;
+    }
+}
+
+.dateSlot {
+    border: 1px solid v.$gray;
+    border-radius: 8px;
+    padding: .5rem .1rem;
+
+    button {
+        font-size: 12px;
+        // padding-top: 0.7rem;
+        color: v.$light-green;
+        font-weight: bold;
+        background: transparent;
+    }
+
+    p {
+        font-size: 13px;
+        font-weight: medium;
+        color: v.$light-green;
+    }
+}

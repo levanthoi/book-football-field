@@ -34,35 +34,56 @@ export const dataMenu = [
 export const dataCategories = [
   {
     id: 1,
-    categoryId: 2,
+    category: {
+      title: 'Giới thiệu',
+      urlSlug: 'about',
+      categoryId: 2,
+    },
     children: [
       {
         id: 10,
         title: 'Giới thiệu',
+        urlSlug: 'gioi-thieu',
         content:
           '<p>Hiện nay các trung tâm còn tổ chức quảng bá, cho thuê sân mới chỉ dừng lại ở mức độ riêng lẻ, rời rạc, điều này gây khó khăn không ít cho người dùng có nhu cầu tìm và đặt thuê sân một cách nhanh chóng. Với sự bùng nổ của công nghệ thông tin, những chiếc điện thoại, máy tính dường như đã trở thành vật bất ly thân của nhiều người. Nắm bắt được nhu cầu của người sử dụng và mong muốn xây dựng được một ứng dụng nhằm hỗ trợ cho việc đặt thuê sân bóng đá được dễ dàng hơn do đó hệ thống mà chúng tôi muốn nói đến ở đây là xây dựng một trang web để cung cấp cho khách hàng những thông tin chi tiết về địa điểm sân, tình trạng sân bóng,mức giá cụ thể từng loại sân và các dịch vụ mà sân bóng cung cấp đến khách hàng chính xác để khách hàng có thể chọn lựa sân bóng phù hợp và nhanh chóng tiện lợi.Nó cũng sẽ giảm bớt khó khăn trong khâu quản lý của người chủ sân .</p><p>Website quản lý hệ thống sân bóng đá mà nhóm xây dựng sẽ tập trung vào các chức năng quan trọng gồm:quản lý thông tin sân bóng,quản lý thông tin khách hàng,quản lý thông tin mức giá các sân,các dịch vị cung cấp cho khách hàng,quản lý quá trình đặt sân, hủy sân online và quản lý thông tin giao dịch với khách hàng.</p>',
       },
       {
         id: 11,
         title: 'GIFT CARD',
+        urlSlug: 'gift-card',
+        content:
+          '<p>Gift Card FootballBooking vốn là mã thẻ quà tặng dùng thanh toán tiền cho tài khoản FootballBooking của bạn dùng book các phần chơi golf, các gói chơi golf có trên FootballBooking. Quý khách có thể dùng Gift Card để giảm một phần chi phí thanh toán hoặc thanh toán toàn bộ giao dịch của bạn trên FootballBooking.</p><p><strong>Làm sao để có được mã Gift Card?</strong></p><p>Khi bạn thực hiện 1 giao dịch thành công trên Golfbooking, bạn sẽ được cộng thêm 1 điểm tích lũy mua hàng, khi đạt đủ số điều kiệu nhận Gift Card chúng tôi sẽ gửi cho quý khách một mã Gift Card:</p>',
       },
       {
         id: 12,
         title: 'Hợp tác',
+        urlSlug: 'hop-tac',
+        content:
+          '<p>Gift Card FootballBooking vốn là mã thẻ quà tặng dùng thanh toán tiền cho tài khoản FootballBooking của bạn dùng book các phần chơi golf, các gói chơi golf có trên Golfbooing. Quý khách có thể dùng Gift Card để giảm một phần chi phí thanh toán hoặc thanh toán toàn bộ giao dịch của bạn trên FootballBooking.</p>',
       },
       {
         id: 13,
         title: 'Chính sách bảo mật',
+        urlSlug: 'chinh-sach-bao-mat',
+        content:
+          '<p>Gift Card FootballBooking vốn là mã thẻ quà tặng dùng thanh toán tiền cho tài khoản FootballBooking của bạn dùng book các phần chơi golf, các gói chơi golf có trên Golfbooing. Quý khách có thể dùng Gift Card để giảm một phần chi phí thanh toán hoặc thanh toán toàn bộ giao dịch của bạn trên FootballBooking.</p>',
       },
       {
         id: 14,
         title: 'Điều khoản',
+        urlSlug: 'dieu-khoan',
+        content:
+          '<p>Gift Card FootballBooking vốn là mã thẻ quà tặng dùng thanh toán tiền cho tài khoản FootballBooking của bạn dùng book các phần chơi golf, các gói chơi golf có trên Golfbooing. Quý khách có thể dùng Gift Card để giảm một phần chi phí thanh toán hoặc thanh toán toàn bộ giao dịch của bạn trên FootballBooking.</p>',
       },
     ],
   },
   {
     id: 2,
-    categoryId: 4,
+    category: {
+      title: 'Tin tức',
+      urlSlug: 'blog',
+      categoryId: 4,
+    },
     children: [
       {
         idCategory: 40,
@@ -164,6 +185,12 @@ export const dataPitch = [
     address: 'Cổng sau Đại học Thủy Lợi',
     description: '',
     image: 'https://cdn.malaebapp.com/images/stadium/375/small',
+    imgSlider: [
+      'https://cdn.malaebapp.com/images/stadium/78/4dfde3f2/large',
+      'https://cdn.malaebapp.com/images/stadium/78/11498ba5/large',
+      'https://cdn.malaebapp.com/images/stadium/78/4dfde3f2/large',
+      'https://cdn.malaebapp.com/images/stadium/78/11498ba5/large',
+    ],
   },
   {
     id: 2,
@@ -185,6 +212,12 @@ export const dataPitch = [
     address: 'Đại học Y Hà Nội',
     description: '',
     image: 'https://cdn.malaebapp.com/images/stadium/78/small',
+    imgSlider: [
+      'https://cdn.malaebapp.com/images/stadium/78/4dfde3f2/large',
+      'https://cdn.malaebapp.com/images/stadium/78/11498ba5/large',
+      'https://cdn.malaebapp.com/images/stadium/78/4dfde3f2/large',
+      'https://cdn.malaebapp.com/images/stadium/78/11498ba5/large',
+    ],
   },
   {
     id: 3,
@@ -214,6 +247,12 @@ export const dataPitch = [
     address: 'Nguyễn Trãi Thanh Xuân Hà Nội',
     description: '',
     image: 'https://cdn.malaebapp.com/images/stadium/9/small',
+    imgSlider: [
+      'https://cdn.malaebapp.com/images/stadium/78/4dfde3f2/large',
+      'https://cdn.malaebapp.com/images/stadium/78/11498ba5/large',
+      'https://cdn.malaebapp.com/images/stadium/78/4dfde3f2/large',
+      'https://cdn.malaebapp.com/images/stadium/78/11498ba5/large',
+    ],
   },
   {
     id: 4,
@@ -235,6 +274,12 @@ export const dataPitch = [
     address: 'Mỹ Đình',
     description: '',
     image: 'https://cdn.malaebapp.com/images/stadium/9/small',
+    imgSlider: [
+      'https://cdn.malaebapp.com/images/stadium/78/4dfde3f2/large',
+      'https://cdn.malaebapp.com/images/stadium/78/11498ba5/large',
+      'https://cdn.malaebapp.com/images/stadium/78/4dfde3f2/large',
+      'https://cdn.malaebapp.com/images/stadium/78/11498ba5/large',
+    ],
   },
   {
     id: 5,
@@ -256,6 +301,12 @@ export const dataPitch = [
     address: 'Nguyễn Trãi Thanh Xuân Hà Nội',
     description: '',
     image: 'https://cdn.malaebapp.com/images/stadium/375/small',
+    imgSlider: [
+      'https://cdn.malaebapp.com/images/stadium/78/4dfde3f2/large',
+      'https://cdn.malaebapp.com/images/stadium/78/11498ba5/large',
+      'https://cdn.malaebapp.com/images/stadium/78/4dfde3f2/large',
+      'https://cdn.malaebapp.com/images/stadium/78/11498ba5/large',
+    ],
   },
   {
     id: 6,
@@ -281,6 +332,12 @@ export const dataPitch = [
     address: 'Nguyễn Trãi Thanh Xuân Hà Nội',
     description: '',
     image: 'https://cdn.malaebapp.com/images/stadium/932/small',
+    imgSlider: [
+      'https://cdn.malaebapp.com/images/stadium/78/4dfde3f2/large',
+      'https://cdn.malaebapp.com/images/stadium/78/11498ba5/large',
+      'https://cdn.malaebapp.com/images/stadium/78/4dfde3f2/large',
+      'https://cdn.malaebapp.com/images/stadium/78/11498ba5/large',
+    ],
   },
 ];
 
@@ -391,6 +448,10 @@ export const matchDuration = [
 ];
 
 export const pitchSizes = [
+  {
+    id: 10,
+    title: '5 v 5',
+  },
   {
     id: 11,
     title: '7 v 7',
