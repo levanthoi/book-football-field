@@ -1,28 +1,15 @@
 import React, { useState } from 'react';
 import BreadCrumb from 'component/BreadCrumb';
-import ListCategory from 'component/ListCategory';
 import WebLayout from 'layouts/WebLayout';
 import New from 'component/sections/New';
 import BlogSideBar from 'component/sections/BlogSideBar';
 import styles from 'static/scss/pages/blog.module.scss';
 import cate from 'static/scss/listCategory.module.scss';
 import { dataCategories, dataNews } from 'data/data';
-import { useRouter } from 'next/router';
 
-const blog = () => {
+const Blog = () => {
   const [active, setActive] = useState(0);
   const [listBlog, setListBlog] = useState(dataNews);
-  const router = useRouter();
-
-  const handleClick = (id) => {
-    if (id !== Number(router.query.slug)) {
-      router.push({
-        pathname: '/blog/[blogId]',
-        query: { blogId: id },
-      });
-    }
-    return;
-  };
 
   const handleClickCategory = (index, idCurrent) => {
     setActive(index);
@@ -30,16 +17,13 @@ const blog = () => {
       setListBlog(dataNews);
       return;
     }
-    const listCurrent = dataNews.filter((blog) => {
-      return blog.idCategory === idCurrent;
+    const listCurrent = dataNews.filter((item) => {
+      return item.idCategory === idCurrent;
     });
-
-    // console.log(listCurrent);
 
     setListBlog(listCurrent);
   };
 
-  // console.log(listBlog);
   return (
     <WebLayout title="Tin tức - Booking Football Pitch">
       <BreadCrumb name1="Tin tức" />
@@ -65,9 +49,9 @@ const blog = () => {
             <div className="row">
               {listBlog?.map((item) => {
                 return (
-                  <div className="col-4" key={item?.id} onClick={() => handleClick(item?.id)}>
-                    <New data={item} hasButton={false} pointer={true} />
-                  </div>
+                  <a href={`/blog/detail/${item?.id}`} className="col-4" key={item?.id}>
+                    <New data={item} hasButton={false} pointer />
+                  </a>
                 );
               })}
             </div>
@@ -89,4 +73,4 @@ const blog = () => {
   );
 };
 
-export default blog;
+export default Blog;

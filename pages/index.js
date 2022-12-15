@@ -1,25 +1,65 @@
-import Head from 'next/head';
-import WebLayout from 'layouts/WebLayout';
-import Banner from 'component/sections/Banner';
 import styles from 'static/scss/pages/home.module.scss';
-import SliderCustom from 'component/sections/SliderCustom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleDot, faCalendarDays, faCreditCard } from '@fortawesome/free-solid-svg-icons';
-import PitchCard from 'component/sections/PitchCard';
-import New from 'component/sections/New';
 import { dataPitch, dataNews } from 'data/data';
+
+import dynamic from 'next/dynamic';
+
+const WebLayout = dynamic(() => import('layouts/WebLayout.js'), {
+  ssr: true,
+  loading: () => null,
+});
+const Banner = dynamic(() => import('component/sections/Banner'), {
+  ssr: false,
+  loading: () => null,
+});
+const SliderCustom = dynamic(() => import('component/sections/SliderCustom'), {
+  ssr: true,
+  loading: () => null,
+});
+const PitchCard = dynamic(() => import('component/sections/PitchCard'), {
+  ssr: true,
+  loading: () => null,
+});
+const New = dynamic(() => import('component/sections/New'), {
+  ssr: true,
+  loading: () => null,
+});
+
 export default function Home() {
   const sliceDataNew = dataNews.slice(0, 4);
+  const settings = {
+    dots: true,
+    speed: 500,
+    slidesToShow: 4,
+    slidesToScroll: 1,
+    infinite: false,
+    arrows: false,
+    lazyLoad: true,
+    appendDots: (dots) => (
+      <div>
+        <ul style={{ display: 'inline-flex', paddingTop: '20px' }}> {dots} </ul>
+      </div>
+    ),
+    customPaging: (i) => (
+      <button
+        type="button"
+        style={{
+          width: '12px',
+          height: '12px',
+          borderRadius: '50%',
+          backgroundColor: '#85C240',
+          margin: '0 4px',
+        }}
+      />
+    ),
+  };
 
   return (
     <div>
       <WebLayout title="Đặt sân bóng đá online lớn nhất Hà Nội">
         <div className={styles.site_home_page}>
-          <Banner
-            title="Đặt Sân Bóng Chưa Bao Giờ Dễ Dàng Hơn Thế"
-            site="Đống Đa"
-            hasFormSearch={true}
-          />
+          <Banner title="Đặt Sân Bóng Chưa Bao Giờ Dễ Dàng Hơn Thế" site="Đống Đa" hasFormSearch />
           <div className="container text-center">
             <div className={styles.offer_booking}>
               <h2>
@@ -28,7 +68,11 @@ export default function Home() {
                 <img src="../static/images/soccer.png" />
               </h2>
               <div className="row">
-                <SliderCustom data={dataPitch} />
+                <SliderCustom settings={settings}>
+                  {dataPitch?.map((item) => {
+                    return <PitchCard data={item} key={item.id} />;
+                  })}
+                </SliderCustom>
               </div>
             </div>
             <div className={`row ${styles.score}`}>
@@ -104,7 +148,7 @@ export default function Home() {
                 {sliceDataNew?.map((item) => {
                   return (
                     <div className="col-3" key={item.id}>
-                      <New data={item} hasButton={true} pointer={false} />
+                      <New data={item} hasButton pointer={false} />
                     </div>
                   );
                 })}

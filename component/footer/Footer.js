@@ -10,7 +10,7 @@ const Footer = ({ styles }) => {
           <div className={`col-4 ${styles.left}`}>
             <div className={styles.title}>
               <div className="logo d-flex align-items-center">
-                <img src="static/images/logo.png" alt="logo" />
+                <img src="/static/images/logo.png" alt="logo" />
                 <h4 className={styles.text}>Booking Football Pitch</h4>
               </div>
             </div>
@@ -73,13 +73,11 @@ const Footer = ({ styles }) => {
               <iframe
                 src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Ffootball24honline"
                 style={{ border: 'none', overflow: 'hidden', width: '500px', height: '200px' }}
-                scrolling="no"
-                frameBorder="0"
-                allowFullScreen={true}
                 data-hide-cover={false}
                 data-show-facepile={false}
                 allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-              ></iframe>
+                title="myPage"
+              />
             </div>
           </div>
         </div>

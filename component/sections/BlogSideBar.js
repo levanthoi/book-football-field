@@ -1,23 +1,11 @@
 import React from 'react';
 import styles from 'static/scss/sections/blogSideBar.module.scss';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
 import { dataNews } from 'data/data';
 
 export default function BlogSideBar() {
-  const router = useRouter();
   const sliceDataNewOfften = dataNews?.slice(0, 4);
   const sliceDataNewBest = dataNews?.slice(4, 8);
 
-  const handleClick = (id) => {
-    if (id !== Number(router.query.slug)) {
-      router.push({
-        pathname: '/blog/[blogId]',
-        query: { blogId: id },
-      });
-    }
-    return;
-  };
   return (
     <div className={`${styles.sidebar}`}>
       <div className={styles.best_often}>
@@ -29,10 +17,10 @@ export default function BlogSideBar() {
             return (
               <div className={`${styles.new_item} row`} key={item?.id}>
                 <div className={`${styles.new_image} col-4`}>
-                  <img src={item.image} alt={item.name} />
+                  <img src={item.image} alt={item.title} />
                 </div>
-                <div className={`${styles.new_title} col-8`} onClick={() => handleClick(item?.id)}>
-                  <a>{item.name}</a>
+                <div className={`${styles.new_title} col-8`}>
+                  <a href={`/blog/detail/${item.id}`}>{item.title}</a>
                 </div>
               </div>
             );
@@ -48,10 +36,10 @@ export default function BlogSideBar() {
             return (
               <div className={`${styles.new_item} row`} key={item?.id}>
                 <div className={`${styles.new_image} col-4`}>
-                  <img src={item.image} alt={item.name} />
+                  <img src={item.image} alt={item.title} />
                 </div>
-                <div className={`${styles.new_title} col-8`} onClick={() => handleClick(item.id)}>
-                  <a>{item.name}</a>
+                <div className={`${styles.new_title} col-8`}>
+                  <a href={`/blog/${item.id}`}>{item.title}</a>
                 </div>
               </div>
             );

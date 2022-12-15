@@ -15,7 +15,7 @@ export default function Banner({ title, site, hasFormSearch }) {
         <h1 className={styles.title}>{title}</h1>
         <p className={styles.suggest}>Tìm Sân Bóng Gần Khu Vực {site}</p>
       </div>
-      <>
+      <div>
         {hasFormSearch ? (
           <div className={styles.form_search}>
             <form onSubmit={handleSubmit(onClickSubmit)}>
@@ -39,7 +39,7 @@ export default function Banner({ title, site, hasFormSearch }) {
         ) : (
           ''
         )}
-      </>
+      </div>
     </div>
   );
 }
