@@ -21,9 +21,7 @@ const WebLayout = ({ children, title }) => {
   const [showSignUp, setShowSignUp] = useState(false);
   const [showForgetPass, setShowForgetPass] = useState(false);
 
-  useEffect(() => {
-    console.log(1);
-  }, [showLogin, showSignUp, setShowForgetPass]);
+  useEffect(() => {}, [showLogin, showSignUp, setShowForgetPass]);
   return (
     <React.Fragment>
       <ShowFormContext.Provider

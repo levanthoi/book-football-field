@@ -13,7 +13,7 @@ module.exports.routes = {
     { path: '/book', name: 'book', component: 'book' },
     { path: '/blog', name: 'blog', component: 'blog' },
     { path: '/book/:id', name: 'detail', component: 'PitchDetail' },
-    { path: '/blog/:slug', name: 'blog_detail', component: 'blog_detail' },
+    { path: '/blog/detail/:id', name: 'blog_detail', component: 'blog_detail' },
     { path: '/contact', name: 'contact', component: 'contact' },
     { path: '/checkout', name: 'checkout', component: 'checkout' },
   ],

@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faClose } from '@fortawesome/free-solid-svg-icons';
 import styles from 'static/scss/formLogin.module.scss';
@@ -10,7 +11,15 @@ export default function FormLogin() {
   const { register, handleSubmit } = useForm();
 
   const handleLogin = (data) => {
-    console.log(data);
+    const info = { username: data.username, email: data.email, password: data.password };
+    axios
+      .post('http://localhost:2003/v1/auth/login', info)
+      .then(() => {
+        console.log('Login success');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   return (
     <div className={`${styles.form_login} ${showLogin ? 'show' : ''}`}>
@@ -18,7 +27,7 @@ export default function FormLogin() {
       <form action="" onSubmit={handleSubmit(handleLogin)}>
         <div className={styles.field}>
           <FontAwesomeIcon icon={faUser} />
-          <input type="text" placeholder="Phone" {...register('phone')} />
+          <input type="text" placeholder="Tên tài khoản" {...register('username')} />
         </div>
         <div className={styles.field}>
           <FontAwesomeIcon icon={faLock} />
@@ -26,6 +35,7 @@ export default function FormLogin() {
         </div>
         <div>
           <button
+            type="button"
             className={styles.link}
             onClick={() => {
               setShowLogin(false);
@@ -42,6 +52,7 @@ export default function FormLogin() {
           <p>
             Chưa có tài khoản?{' '}
             <button
+              type="button"
               className={styles.link}
               onClick={() => {
                 setShowLogin(false);

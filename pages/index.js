@@ -59,11 +59,7 @@ export default function Home() {
     <div>
       <WebLayout title="Đặt sân bóng đá online lớn nhất Hà Nội">
         <div className={styles.site_home_page}>
-          <Banner
-            title="Đặt Sân Bóng Chưa Bao Giờ Dễ Dàng Hơn Thế"
-            site="Đống Đa"
-            hasFormSearch={true}
-          />
+          <Banner title="Đặt Sân Bóng Chưa Bao Giờ Dễ Dàng Hơn Thế" site="Đống Đa" hasFormSearch />
           <div className="container text-center">
             <div className={styles.offer_booking}>
               <h2>
@@ -152,7 +148,7 @@ export default function Home() {
                 {sliceDataNew?.map((item) => {
                   return (
                     <div className="col-3" key={item.id}>
-                      <New data={item} hasButton={true} pointer={false} />
+                      <New data={item} hasButton pointer={false} />
                     </div>
                   );
                 })}
