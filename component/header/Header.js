@@ -7,6 +7,7 @@ const Header = ({ styles }) => {
   const { setShowLogin, setShowSignUp } = useContext(ShowFormContext);
   const router = useRouter();
   const { asPath } = router;
+  console.log('router', router);
   return (
     <div className={styles.header}>
       <div className="container">

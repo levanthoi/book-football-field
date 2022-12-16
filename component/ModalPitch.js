@@ -1,45 +1,60 @@
 import React, { useState } from 'react';
+import styles from 'static/scss/sections/modal.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { matchDuration } from 'data/data';
+import { formatDate } from 'utils/helper';
+import { formatNumber } from 'utils/utils';
+import { useRouter } from 'next/router';
 
-const ModalPitch = ({ data }) => {
-  const [date, setDate] = useState(new Date());
-  const [toggleDuration, setToggleDuration] = useState(-99);
-  const [togglePitch, setTogglePitch] = useState(-99);
-  // const [timePitch, setTimePitch] = useState(-99);
+const NEXT = 'next';
+const PREV = 'prev';
+
+const ModalPitch = (props) => {
+  // console.log('props', props);
+  const router = useRouter();
+  const {
+    data,
+    date,
+    toggleDuration,
+    togglePitch,
+    handleClose,
+    handleSelectedDate,
+    handleSelectedTime,
+    handleSelectedPitch,
+  } = props;
+
   const [totalPrice, setTotalPrice] = useState(0);
-  const [showModal, setShowModal] = useState(false);
-  const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-  const todayDate = new Date();
-  const getDate = (day) => {
-    return day.toLocaleDateString('vi-Vn', options);
-  };
-  const increaseDate = (day) => {
-    // const dayNew = day.getDate() + 1;
-    // console.log('date1', date);
-    todayDate.setDate(day.getDate() + 1);
-    setDate(todayDate);
-    // console.log('date2', date);
-    // return getDate(date);
-  };
-  const decreaseDate = (day) => {
-    todayDate.setDate(day.getDate() - 1);
-    setDate(todayDate);
-    // return getDate(date);
-  };
-  const onChangeDate = (newDate) => {
-    console.log(`New date selected - ${newDate.toString()}`);
-    setDate(newDate);
-  };
-  // const handleChange = (e, item) => {
-  //   console.log('e', e);
-  //   console.log('item', item);
-  // };
+
   const handleClick = (e, item) => {
     if (e.target.checked) setTotalPrice((prePrice) => Number(prePrice) + Number(item.price));
     else if (!e.target.checked && Number(totalPrice) > 0)
       setTotalPrice((prePrice) => Number(prePrice) - Number(item.price));
-    // console.log('e', e.target.checked);
-    // console.log('item', item);
   };
+  // const [date, setDate] = useState(new Date());
+
+  // const todayDate = new Date();
+
+  // const increaseDate = (day) => {
+  //   todayDate.setDate(day.getDate() + 1);
+  //   setDate(todayDate);
+  // };
+  // const decreaseDate = (day) => {
+  //   todayDate.setDate(day.getDate() - 1);
+  //   setDate(todayDate);
+  // };
+  // const onChangeDate = (newDate) => {
+  //   console.log(`New date selected - ${newDate.toString()}`);
+  //   setDate(newDate);
+  // };
+  // const handleClick = (e, item) => {
+  //   if (e.target.checked) setTotalPrice((prePrice) => Number(prePrice) + Number(item.price));
+  //   else if (!e.target.checked && Number(totalPrice) > 0)
+  //     setTotalPrice((prePrice) => Number(prePrice) - Number(item.price));
+  // };
+
+  // console.log('data', data);
+  // console.log('date', date);
   return (
     <div
       className="modal fade show"
@@ -60,10 +75,8 @@ const ModalPitch = ({ data }) => {
               className="btn-close"
               data-dismiss="modal"
               aria-label="Close"
-              onClick={() => setShowModal(false)}
-            >
-              {/* <span aria-hidden="true">×</span> */}
-            </button>
+              onClick={() => handleClose()}
+            />
           </div>
           <div className="modal-body container">
             <div className="row">
@@ -72,16 +85,16 @@ const ModalPitch = ({ data }) => {
                 <div className={styles.dateSlot}>
                   <div className="row align-items-center">
                     <div className="col-lg-3">
-                      <button type="button" onClick={() => decreaseDate(date)}>
+                      <button type="button" onClick={() => handleSelectedDate(date, PREV)}>
                         <FontAwesomeIcon icon={faAngleLeft} />
                         Ngày trước
                       </button>
                     </div>
                     <div className="col-lg-6">
-                      <p>{getDate(date)}</p>
+                      <p>{formatDate(date)}</p>
                     </div>
                     <div className="col-lg-3">
-                      <button type="button" onClick={() => increaseDate(date)}>
+                      <button type="button" onClick={() => handleSelectedDate(date, NEXT)}>
                         Ngày sau
                         <FontAwesomeIcon icon={faAngleRight} />
                       </button>
@@ -100,7 +113,7 @@ const ModalPitch = ({ data }) => {
                           toggleDuration === index ? 'btn btn-primary' : 'btn btn-secondary'
                         }
                         style={{ width: '100%' }}
-                        onClick={() => setToggleDuration(index)}
+                        onClick={() => handleSelectedTime(index)}
                       >
                         <span className="number">{item?.time}</span>
                         {item?.time && 'ph'}
@@ -120,11 +133,10 @@ const ModalPitch = ({ data }) => {
                       togglePitch === index ? 'btn btn-primary' : 'btn btn-secondary'
                     }`}
                     onClick={() => {
-                      setTogglePitch(index);
+                      handleSelectedPitch(index);
                       setTotalPrice(0);
                     }}
                   >
-                    {/* <img src="/static/images/soccer.png" width={15} alt="img" /> */}
                     <span className="mx-2 number"> {item?.type}</span>
                     <span>Sân {index + 1}</span>
                   </button>
@@ -138,20 +150,14 @@ const ModalPitch = ({ data }) => {
                     <input
                       type="checkbox"
                       name={item?.price}
-                      // onChange={(e) => handleChange(e, item)}
                       onClick={(e) => handleClick(e, item)}
                       id=""
                       className="position-absolute"
                       style={{ left: '-100vw' }}
                     />
                     <div
-                      // className={`p-3 mb-2 w-100 ${styles.pitch} ${
-                      //   timePitch === ind ? 'btn btn-primary' : 'btn btn-secondary'
-                      // }`}
                       className={`p-3 mb-2 w-100 ${styles.pitch} btn btn-secondary
                           }`}
-                      // style={{height: "80%"}}
-                      // onClick={() => setTimePitch(ind)}
                     >
                       <p className="fw-bold mb-1 number">
                         {item?.time} <br />
@@ -159,17 +165,6 @@ const ModalPitch = ({ data }) => {
                       </p>
                     </div>
                   </label>
-                  {/* <input
-                        type="checkbox"
-                        name=""
-                        id=""
-                        className="w-100 h-100 position-absolute"
-                      />
-                      <input type="text" value="" id="a" className="w-100 h-100" />
-                      <label htmlFor="a" className="fw-bold mb-1 number position-absolute">
-                        {item?.time} <br />
-                        {formatNumber(item?.price)}&nbsp;VNĐ
-                      </label> */}
                 </div>
               ))}
             </div>
@@ -181,6 +176,7 @@ const ModalPitch = ({ data }) => {
                   <button
                     type="button"
                     className="btn btn-filter w-100 fw-bolder my-2 text-uppercase"
+                    onClick={() => router.push('/checkout')}
                   >
                     Đặt ngay (
                     <span className="float-right">
