@@ -15,5 +15,5 @@ module.exports.routes = {
     { path: '/book/:id', name: 'detail', component: 'PitchDetail' },
     { path: '/blog/detail/:id', name: 'blog_detail', component: 'blog_detail' },
   ],
-  dashboard: [],
+  dashboard: [{ path: '/layoutAdmin', name: 'dashboard', component: 'dashboard' }],
 };
