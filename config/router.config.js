@@ -17,5 +17,5 @@ module.exports.routes = {
     { path: '/contact', name: 'contact', component: 'contact' },
     { path: '/checkout', name: 'checkout', component: 'checkout' },
   ],
-  dashboard: [],
+  dashboard: [{ path: '/layoutAdmin', name: 'dashboard', component: 'dashboard' }],
 };

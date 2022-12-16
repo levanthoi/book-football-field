@@ -23,38 +23,38 @@ const WebLayout = ({ children, title }) => {
 
   useEffect(() => {}, [showLogin, showSignUp, setShowForgetPass]);
   return (
-    <React.Fragment>
-      <ShowFormContext.Provider
-        value={{
-          showLogin,
-          setShowLogin,
-          showSignUp,
-          setShowSignUp,
-          showForgetPass,
-          setShowForgetPass,
-        }}
-      >
-        <Head>
-          {/* <link rel="stylesheet" href={`${cssUrl1}`} type="text/css" media="all" />
+    // <React.Fragment>
+    <ShowFormContext.Provider
+      value={{
+        showLogin,
+        setShowLogin,
+        showSignUp,
+        setShowSignUp,
+        showForgetPass,
+        setShowForgetPass,
+      }}
+    >
+      <Head>
+        {/* <link rel="stylesheet" href={`${cssUrl1}`} type="text/css" media="all" />
         <link rel="stylesheet" href={`${cssUrl2}`} type="text/css" media="all" /> */}
-          <title>{title}</title>
-        </Head>
-        <Header styles={styles} />
-        <div
-          className={`${styles.overlay} ${showLogin | showSignUp | showForgetPass ? 'show' : ''}`}
-          onClick={() => {
-            setShowLogin(false);
-            setShowSignUp(false);
-            setShowForgetPass(false);
-          }}
-        ></div>
-        <FormLogin />
-        <FormSignUp />
-        <FormForgetPass />
-        <main className={styles.site_content_page}>{children}</main>
-        <Footer styles={styles} />
-      </ShowFormContext.Provider>
-    </React.Fragment>
+        <title>{title}</title>
+      </Head>
+      <Header styles={styles} />
+      <div
+        className={`${styles.overlay} ${showLogin | showSignUp | showForgetPass ? 'show' : ''}`}
+        onClick={() => {
+          setShowLogin(false);
+          setShowSignUp(false);
+          setShowForgetPass(false);
+        }}
+      ></div>
+      <FormLogin />
+      <FormSignUp />
+      <FormForgetPass />
+      <main className={styles.site_content_page}>{children}</main>
+      <Footer styles={styles} />
+    </ShowFormContext.Provider>
+    // {/* </React.Fragment> */}
   );
 };
 
