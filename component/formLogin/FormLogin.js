@@ -10,15 +10,7 @@ export default function FormLogin() {
   const { register, handleSubmit } = useForm();
 
   const handleLogin = (data) => {
-    const info = { username: data.username, email: data.email, password: data.password };
-    axios
-      .post('http://localhost:2003/v1/auth/login', info)
-      .then(() => {
-        console.log('Login success');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    console.log(data);
   };
   return (
     <div className={`${styles.form_login} ${showLogin ? 'show' : ''}`}>

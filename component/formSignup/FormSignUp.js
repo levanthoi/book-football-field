@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faClose, faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import styles from 'static/scss/formLogin.module.scss';
@@ -11,15 +10,7 @@ export default function FormSignUp() {
   const { register, handleSubmit } = useForm();
 
   const handleRegister = (data) => {
-    const info = { username: data.username, email: data.email, password: data.password };
-    axios
-      .post('http://localhost:2003/v1/auth/register', info)
-      .then(() => {
-        console.log('Success');
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    console.log(data);
   };
   return (
     <div className={`${styles.form_login} ${showSignUp ? 'show' : ''}`}>
