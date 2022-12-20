@@ -1,0 +1,42 @@
+@use '../partials/variables.scss' as v;
+
+.checkout {
+
+    padding: 1.5rem 1rem;
+
+    .title {
+        display: flex;
+        gap: 1rem;
+        color: v.$light-green;
+
+        .icon {
+            width: 3rem;
+            height: 2rem;
+        }
+
+        h3 {
+            border-bottom: 3px solid v.$dark-green;
+        }
+    }
+
+    .list_bank {
+        padding: .5rem 0;
+
+        img {
+            max-width: 155px;
+            height: 30px;
+            object-fit: cover;
+            margin-left: 12px;
+        }
+
+        .info_bank {
+            padding-left: 2.5rem;
+
+            // p {
+            //     span {
+            //         color: v.$gray;
+            //     }
+            // }
+        }
+    }
+}
