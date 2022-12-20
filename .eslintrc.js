@@ -47,6 +47,8 @@ module.exports = {
       },
     ],
     'react/jsx-fragments': 'off',
+    'jsx-a11y/label-has-associated-control': 'off',
+    'jsx-a11y/label-has-for': 'off',
     // 'import/no-unresolved': [2, { ignore: ['^@/', '^umi/'] }],
     // 'import/no-extraneous-dependencies': [
     //   2,

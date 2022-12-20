@@ -463,3 +463,23 @@ export const pitchSizes = [
     title: '11 v 11',
   },
 ];
+
+// ngân hàng
+export const dataBanks = [
+  {
+    id: 1,
+    title: 'BIDV',
+    accountNumber: '382133121',
+    accountName: 'Lê Đức Nam',
+    branch: 'Cầu Giấy - Hà Nội',
+    image: 'https://golfbooking.com.vn/images/config/bidv_1517888307.png',
+  },
+  {
+    id: 2,
+    title: 'VIETINBANK',
+    accountNumber: '1092378742',
+    accountName: 'Lê Đức Nam',
+    branch: 'ĐỐNG ĐA - HÀ NỘI',
+    image: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Logo_MB_new.png',
+  },
+];
