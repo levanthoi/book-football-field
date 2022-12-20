@@ -134,3 +134,36 @@
 }
 
 
+.layout_admin {
+    overflow-x: hidden;
+    .header_admin {
+        background-color: #f0f0f0 !important;
+        margin-bottom: 20px;
+        span {
+            color: #333;
+            font-size: 1rem;
+        }
+    
+        .text_bold {
+            font-weight: bold;
+        }
+    
+        .admin_login {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+    }
+
+    .copyright {
+        text-align: center;
+        padding: 10px 0;
+        p {
+            font-size: 1.1rem;
+            color: rgb(2, 2, 222);
+        }
+    }
+    
+}
+
+

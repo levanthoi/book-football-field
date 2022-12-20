@@ -1,0 +1,59 @@
+.layout_content {
+    padding-inline: 20px;
+    .list_card {
+        margin: 0 20px;
+        .card_item {
+            .card_body {
+                display: flex;
+                align-items: center;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                justify-content: space-between;
+
+                .content_card {
+                    h4 {
+                        font-size: 1.1rem;
+                        color: #575757;
+                        font-weight: normal;
+                    }
+                    h5 {
+                        font-size: 1.6rem;
+                        font-weight: bold;
+                        span {
+                            font-size: 1rem;
+                            font-weight: 500;
+                            color: rgb(118, 187, 13);
+                            padding-left: 4px;
+                        }
+                        
+                    }
+                }
+
+                .icon_card {
+                    background-color: rgb(2, 2, 222);
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 5px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                        fill: #fff;
+                    }
+                }
+            }
+        }
+    }
+
+    .chart_bar {
+        margin-top: 20px;
+        width: 100%;
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
