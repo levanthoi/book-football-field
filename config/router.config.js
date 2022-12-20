@@ -17,5 +17,15 @@ module.exports.routes = {
     { path: '/contact', name: 'contact', component: 'contact' },
     { path: '/checkout', name: 'checkout', component: 'checkout' },
   ],
-  dashboard: [{ path: '/layoutAdmin', name: 'dashboard', component: 'dashboard' }],
+  dashboard: [
+    { path: '/layoutAdmin/dashboard', name: 'dashboard', component: 'dashboard' },
+    { path: '/layoutAdmin/ecommerce', name: 'ecommerce', component: 'dashboard' },
+    { path: '/layoutAdmin/pitchs', name: 'pitchs', component: 'dashboard' },
+    { path: '/layoutAdmin/blogs', name: 'blogs', component: 'dashboard' },
+    { path: '/layoutAdmin/users', name: 'users', component: 'dashboard' },
+    { path: '/layoutAdmin/employees', name: 'employees', component: 'dashboard' },
+    { path: '/layoutAdmin/owners', name: 'owners', component: 'dashboard' },
+    { path: '/layoutAdmin/advertisment', name: 'advertisment', component: 'dashboard' },
+    { path: '/layoutAdmin/login', name: 'login', component: 'dashboard' },
+  ],
 };

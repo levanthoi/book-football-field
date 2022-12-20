@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser, faLock, faClose } from '@fortawesome/free-solid-svg-icons';
 import styles from 'static/scss/formLogin.module.scss';

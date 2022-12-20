@@ -5,7 +5,6 @@ try {
   const cookieParser = require('cookie-parser');
   const bodyParser = require('body-parser');
   const path = require('path');
-  const connectDB = require('./utilsServer/connectDB.js');
 
   const isProd = process.env.NODE_ENV === 'production';
 
@@ -47,23 +46,10 @@ try {
     );
     server.use(cookieParser());
 
-    // Connect Database
-    connectDB(process.env.DATABASE_URL);
-
-    Router.forEachPrettyPattern(
-      (page, pattern, defaultParams) =>
-        server.get(pattern, (req, res) => {
-          app.render(req, res, `/${page}`, Object.assign({}, defaultParams, req.query, req.params));
-        }),
-
-      // Route api
-      server.use('/v1/auth', require('./api/auth.js')),
-      server.use('/api/users', require('./api/user.js')),
-      server.use('/api/blogs', require('./api/blog.js')),
-      server.use('/api/pitchs', require('./api/pitch.js')),
-      server.use('/api/location', require('./api/location.js')),
-      server.use('/api/saleOff', require('./api/saleOff.js')),
-      server.use('/api/booking', require('./api/booking.js'))
+    Router.forEachPrettyPattern((page, pattern, defaultParams) =>
+      server.get(pattern, (req, res) => {
+        app.render(req, res, `/${page}`, Object.assign({}, defaultParams, req.query, req.params));
+      })
     );
 
     // server.get( '/p/:slug', ( req, res ) => {
