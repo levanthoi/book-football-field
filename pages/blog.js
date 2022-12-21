@@ -1,15 +1,24 @@
-import React, { useState } from 'react';
 import BreadCrumb from 'component/BreadCrumb';
-import WebLayout from 'layouts/WebLayout';
-import New from 'component/sections/New';
 import BlogSideBar from 'component/sections/BlogSideBar';
-import styles from 'static/scss/pages/blog.module.scss';
-import cate from 'static/scss/listCategory.module.scss';
+import New from 'component/sections/New';
 import { dataCategories, dataNews } from 'data/data';
+import WebLayout from 'layouts/WebLayout';
+import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import cate from 'static/scss/listCategory.module.scss';
+import styles from 'static/scss/pages/blog.module.scss';
 
+// import { blogs } from 'models/blogsModel';
+// import withDva from 'utils/store';
+// import models from 'models';
+
+// const PAGE_SIZE = 6;
 const Blog = () => {
   const [active, setActive] = useState(0);
   const [listBlog, setListBlog] = useState(dataNews);
+  const [articles, setArticles] = useState([]);
+
+  const dispatch = useDispatch();
 
   const handleClickCategory = (index, idCurrent) => {
     setActive(index);
@@ -23,6 +32,32 @@ const Blog = () => {
 
     setListBlog(listCurrent);
   };
+
+  const fetchArticles = () => {
+    console.log('sa');
+    dispatch({
+      type: 'blogs/fetchAllArticle',
+      // payload: {
+      //   filter: {
+      //     status: true,
+      //     categoriesId: data.id,
+      //     sitesId: dataSite.id,
+      //   },
+      //   range: [indexOfFirst * indexOfLast, (indexOfFirst + 1) * indexOfLast - 1],
+      // },
+      callback: (response) => {
+        console.log('respo', response);
+        if (response.success) {
+          const { list } = response.result;
+          setArticles(list);
+        }
+      },
+    });
+  };
+  useEffect(() => {
+    fetchArticles();
+  }, []);
+  console.log('articles', articles);
 
   return (
     <WebLayout title="Tin tức - Booking Football Pitch">
@@ -74,3 +109,5 @@ const Blog = () => {
 };
 
 export default Blog;
+// export default withDva((state) => state.blogs)(Blog);
+// export default connect(mapStateToProps)(Blog);

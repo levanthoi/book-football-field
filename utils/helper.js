@@ -11,3 +11,5 @@ export const formatDate = (date) => {
 
   return newDate.toLocaleDateString('vi-Vn', dateOptions);
 };
+
+export const isClient = typeof window !== 'undefined';

@@ -5,6 +5,7 @@ try {
   const cookieParser = require('cookie-parser');
   const bodyParser = require('body-parser');
   const path = require('path');
+  const cors = require('cors');
 
   const isProd = process.env.NODE_ENV === 'production';
 
@@ -21,12 +22,19 @@ try {
   const app = next({ dev });
   const Router = require('./routes').Router;
 
+  const corsOptions = {
+    origin: '*',
+    // credentials: true, //access-control-allow-credentials:true
+    // optionSuccessStatus: 200,
+  };
+
   const oneYear = 1 * 365 * 24 * 60 * 60 * 1000;
 
   const handle = app.getRequestHandler();
 
   app.prepare().then(() => {
     const server = express();
+    // server.use(cors()); // Use this after the variable declaration
     server.use(express.json());
     server.use(express.urlencoded({ extended: false }));
     // fb(server);
@@ -45,6 +53,18 @@ try {
       })
     );
     server.use(cookieParser());
+
+    server.use((req, res, next) => {
+      res.header('origin', '*');
+      // res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+      res.header('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+      // res.header('Access-Control-Allow-Credentials', true);
+      if (req.method == 'OPTIONS') {
+        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+        return res.status(200).json({});
+      }
+      next();
+    });
 
     Router.forEachPrettyPattern((page, pattern, defaultParams) =>
       server.get(pattern, (req, res) => {

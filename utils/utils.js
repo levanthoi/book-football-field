@@ -25,3 +25,8 @@ export const formatNumber = (value) => {
 export const totalTypePitch = (typePitch) => {
   return typePitch?.length;
 };
+
+export function isAntdPro() {
+  if (typeof window !== 'undefined') return window.location.hostname === 'preview.pro.ant.design';
+  return '';
+}

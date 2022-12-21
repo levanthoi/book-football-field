@@ -37,6 +37,7 @@ const SliderCustom = dynamic(() => import('component/sections/SliderCustom'), {
 });
 
 const PitchDetail = () => {
+  // console.log('public', CONFIG.APP_NAME);
   //   const router = useRouter();
   const { query } = useRouter();
   const [date, setDate] = useState(new Date());
