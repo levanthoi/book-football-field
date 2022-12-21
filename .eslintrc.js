@@ -60,6 +60,7 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
     'import/prefer-default-export': 'off',
+    'import/no-anonymous-default-export': 'off',
     'react/display-name': 1,
   },
 };

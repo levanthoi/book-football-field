@@ -25,11 +25,15 @@ const ModalPitch = (props) => {
   } = props;
 
   const [totalPrice, setTotalPrice] = useState(0);
+  const [toggleTime, setToggleTime] = useState(-99);
 
-  const handleClick = (e, item) => {
-    if (e.target.checked) setTotalPrice((prePrice) => Number(prePrice) + Number(item.price));
-    else if (!e.target.checked && Number(totalPrice) > 0)
-      setTotalPrice((prePrice) => Number(prePrice) - Number(item.price));
+  const handleClick = (item) => {
+    // if (e.target.checked) setTotalPrice((prePrice) => Number(prePrice) + Number(item.price));
+    // else if (!e.target.checked && Number(totalPrice) > 0)
+    //   setTotalPrice((prePrice) => Number(prePrice) - Number(item.price));
+    setToggleTime(item?.id);
+    setTotalPrice(0);
+    setTotalPrice((prePrice) => Number(prePrice) + Number(item.price));
   };
   // const [date, setDate] = useState(new Date());
 
@@ -145,10 +149,20 @@ const ModalPitch = (props) => {
             </div>
             <div className="row">
               {data?.typePitch[togglePitch]?.children?.map((item, ind) => (
-                <div className="col-4" key={item?.id}>
-                  <label style={{ width: '100%' }}>
+                <div className="col-4" key={item?.id} onClick={() => handleClick(item)}>
+                  <div
+                    className={`p-3 mb-2 w-100 ${styles.pitch} ${
+                      toggleTime === item?.id ? 'btn btn-primary ' : 'btn btn-secondary'
+                    } `}
+                  >
+                    <p className="fw-bold mb-1 number">
+                      {item?.time} <br />
+                      {formatNumber(item?.price)}&nbsp;VNĐ
+                    </p>
+                  </div>
+                  {/* <label style={{ width: '100%' }}>
                     <input
-                      type="checkbox"
+                      type="radio"
                       name={item?.price}
                       onClick={(e) => handleClick(e, item)}
                       id=""
@@ -164,7 +178,7 @@ const ModalPitch = (props) => {
                         {formatNumber(item?.price)}&nbsp;VNĐ
                       </p>
                     </div>
-                  </label>
+                  </label> */}
                 </div>
               ))}
             </div>
@@ -176,7 +190,7 @@ const ModalPitch = (props) => {
                   <button
                     type="button"
                     className="btn btn-filter w-100 fw-bolder my-2 text-uppercase"
-                    onClick={() => router.push('/checkout')}
+                    onClick={() => router.push(`/checkout`)}
                   >
                     Đặt ngay (
                     <span className="float-right">
