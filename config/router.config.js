@@ -19,7 +19,7 @@ module.exports.routes = {
   ],
   dashboard: [
     { path: '/admin/dashboard', name: 'dashboard', component: 'admin/dashboard' },
-    { path: '/admin/ecommerce', name: 'ecommerce', component: 'admin/ecommerce' },
+    { path: '/admin/sale', name: 'sale', component: 'admin/sale' },
     { path: '/admin/pitchs', name: 'pitchs', component: 'admin/pitchs' },
     { path: '/admin/blogs', name: 'blogs', component: 'admin/blogs' },
     { path: '/admin/users', name: 'users', component: 'admin/account' },

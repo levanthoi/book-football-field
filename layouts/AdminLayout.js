@@ -1,17 +1,15 @@
-import React from 'react';
-import { Layout, Menu, Col, Row, Breadcrumb } from 'antd';
 import {
   HomeFilled,
   SignalFilled,
   TrophyFilled,
   SwitcherFilled,
   SlidersFilled,
-  SettingFilled,
   BellFilled,
-  UserOutlined,
 } from '@ant-design/icons';
+import { Layout, Menu, Col, Row, Breadcrumb } from 'antd';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
+import React from 'react';
 import styles from 'static/scss/layout.module.scss';
 
 const { Header, Sider, Footer, Content } = Layout;
@@ -27,8 +25,8 @@ const adminMenu = [
   },
   {
     id: 2,
-    label: 'Thương mại',
-    key: 'ecommerce',
+    label: 'Doanh thu',
+    key: 'sale',
     children: null,
     type: '',
     icon: <SignalFilled />,
@@ -68,22 +66,6 @@ const adminMenu = [
     children: null,
     type: '',
     icon: <SlidersFilled />,
-  },
-  {
-    id: 7,
-    label: 'Đăng nhập',
-    key: 'login',
-    children: null,
-    type: '',
-    icon: '',
-  },
-  {
-    id: 8,
-    label: 'Đăng xuất',
-    key: 'logout',
-    children: null,
-    type: '',
-    icon: '',
   },
 ];
 
@@ -132,11 +114,9 @@ function AdminLayout({ title, children, breadName }) {
               <Col span={11} offset={1}>
                 <Row align="middle">
                   <Col span={4} offset={14} className={styles.admin_login}>
-                    <UserOutlined /> Đăng nhập
+                    Admin
                   </Col>
-                  <Col span={2} offset={1}>
-                    <SettingFilled />
-                  </Col>
+
                   <Col span={2}>
                     <BellFilled />
                   </Col>
