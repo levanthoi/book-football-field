@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
-import styles from 'static/scss/sections/modal.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { matchDuration } from 'data/data';
+import { useRouter } from 'next/router';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import styles from 'static/scss/sections/modal.module.scss';
 import { formatDate } from 'utils/helper';
 import { formatNumber } from 'utils/utils';
-import { useRouter } from 'next/router';
 
 const NEXT = 'next';
 const PREV = 'prev';
@@ -13,6 +14,8 @@ const PREV = 'prev';
 const ModalPitch = (props) => {
   // console.log('props', props);
   const router = useRouter();
+  const dispatch = useDispatch();
+
   const {
     data,
     date,
@@ -26,11 +29,13 @@ const ModalPitch = (props) => {
 
   const [totalPrice, setTotalPrice] = useState(0);
   const [toggleTime, setToggleTime] = useState(-99);
+  const [pitch, setPitch] = useState({});
 
   const handleClick = (item) => {
     // if (e.target.checked) setTotalPrice((prePrice) => Number(prePrice) + Number(item.price));
     // else if (!e.target.checked && Number(totalPrice) > 0)
     //   setTotalPrice((prePrice) => Number(prePrice) - Number(item.price));
+    setPitch(item);
     setToggleTime(item?.id);
     setTotalPrice(0);
     setTotalPrice((prePrice) => Number(prePrice) + Number(item.price));
@@ -59,6 +64,26 @@ const ModalPitch = (props) => {
 
   // console.log('data', data);
   // console.log('date', date);
+
+  const handleSubmit = () => {
+    const duration = matchDuration[toggleDuration];
+    const newData = {
+      data,
+      date,
+      duration,
+      pitch,
+    };
+    // const newData = [date, duration, pitch];
+    // console.log('duration', duration);
+    // console.log('pitch', pitch);
+    // console.log('date', date);
+    // console.log('newData', newData);
+    dispatch({
+      type: 'cart/increaseItem',
+      product: newData,
+    });
+    router.push(`/checkout`);
+  };
   return (
     <div
       className="modal fade show"
@@ -190,7 +215,7 @@ const ModalPitch = (props) => {
                   <button
                     type="button"
                     className="btn btn-filter w-100 fw-bolder my-2 text-uppercase"
-                    onClick={() => router.push(`/checkout`)}
+                    onClick={() => handleSubmit()}
                   >
                     Đặt ngay (
                     <span className="float-right">

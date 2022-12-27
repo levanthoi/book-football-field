@@ -1,9 +1,18 @@
-import React from 'react';
-import styles from 'static/scss/pages/checkout.module.scss';
+import {
+  faMoneyBill,
+  faCircleInfo,
+  faCalendarDays,
+  faClock,
+  faFutbol,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMoneyBill, faCircleInfo } from '@fortawesome/free-solid-svg-icons';
-import dynamic from 'next/dynamic';
 import { dataBanks } from 'data/data';
+import dynamic from 'next/dynamic';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import styles from 'static/scss/pages/checkout.module.scss';
+import { formatDate } from 'utils/helper';
+import { formatNumber } from 'utils/utils';
 
 const WebLayout = dynamic(() => import('layouts/WebLayout.js'), {
   ssr: true,
@@ -15,13 +24,25 @@ const BreadCrumb = dynamic(() => import('component/BreadCrumb'), {
 });
 
 const checkout = () => {
+  const dispatch = useDispatch();
+  const dataCart = useSelector((state) => state.cart.dataCart);
+
+  useEffect(() => {
+    dispatch({
+      type: 'cart/createCart',
+      listProducts: [],
+      // cartName: `cart`,
+    });
+  }, []);
+  const { data, date, duration, pitch } = dataCart;
+  console.log('dataCart', dataCart);
   return (
     <WebLayout title="Thanh toán - Booking Football Pitch">
       <BreadCrumb name1="Thanh toán" />
       <div className={styles.checkout}>
         <div className="container">
           <div className="row">
-            <div className="col-6">
+            <div className="col-7">
               <div className={styles.title}>
                 <FontAwesomeIcon icon={faMoneyBill} className={styles.icon} />
                 <h3 className="text-uppercase">Hình thức thanh toán</h3>
@@ -76,11 +97,41 @@ const checkout = () => {
                 </div>
               ))}
             </div>
-            <div className="col-6">
+            <div className={`col-5 pb-5 py-4 ${styles.right}`}>
               <div className={styles.title}>
                 <FontAwesomeIcon icon={faCircleInfo} className={styles.icon} />
                 <h3 className="text-uppercase">Thông tin đơn hàng</h3>
               </div>
+              <div className={styles.info_cart}>
+                <div className={styles.info__title}>
+                  <div className={styles.info__image}>
+                    <img src={data?.image} alt="anh" />
+                  </div>
+                  <p className="fw-bold mx-2">{data?.name}</p>
+                  <p className="number">{formatNumber(pitch?.price)}VND</p>
+                </div>
+                <div className={styles.info__details}>
+                  <div className={styles.item}>
+                    <FontAwesomeIcon icon={faCalendarDays} />
+                    <p>Thời gian: {formatDate(date)}</p>
+                  </div>
+                  <div className={styles.item}>
+                    <FontAwesomeIcon icon={faClock} />
+                    <p>Thời lượng đá: {duration?.time}phút</p>
+                  </div>
+                  <div className={styles.item}>
+                    <FontAwesomeIcon icon={faFutbol} />
+                    <p>san 1</p>
+                  </div>
+                </div>
+                <div className={styles.total}>
+                  <p>Tổng giá</p>
+                  <p className="number">{formatNumber(pitch?.price)}VNĐ</p>
+                </div>
+              </div>
+              {/* <div className={styles.barcode}>
+
+              </div> */}
             </div>
           </div>
         </div>
