@@ -34,8 +34,8 @@ try {
 
   app.prepare().then(() => {
     const server = express();
-    // server.use(cors()); // Use this after the variable declaration
     server.use(express.json());
+    server.use(cors()); // Use this after the variable declaration
     server.use(express.urlencoded({ extended: false }));
     // fb(server);
     // compress all requests
@@ -54,17 +54,17 @@ try {
     );
     server.use(cookieParser());
 
-    server.use((req, res, next) => {
-      res.header('origin', '*');
-      // res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-      res.header('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-      // res.header('Access-Control-Allow-Credentials', true);
-      if (req.method == 'OPTIONS') {
-        res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
-        return res.status(200).json({});
-      }
-      next();
-    });
+    // server.use((req, res, next) => {
+    //   res.header('origin', '*');
+    //   // res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    //   res.header('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    //   // res.header('Access-Control-Allow-Credentials', true);
+    //   if (req.method == 'OPTIONS') {
+    //     res.header('Access-Control-Allow-Methods', 'PUT, POST, PATCH, DELETE, GET');
+    //     return res.status(200).json({});
+    //   }
+    //   next();
+    // });
 
     Router.forEachPrettyPattern((page, pattern, defaultParams) =>
       server.get(pattern, (req, res) => {
