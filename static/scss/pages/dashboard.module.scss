@@ -1,3 +1,5 @@
+@use '../partials/variables.scss' as v;
+
 .layout_content {
     padding-inline: 20px;
     .list_card {
@@ -13,7 +15,7 @@
                 .content_card {
                     h4 {
                         font-size: 1.1rem;
-                        color: #575757;
+                        color: v.$gray;
                         font-weight: normal;
                     }
                     h5 {
@@ -22,7 +24,7 @@
                         span {
                             font-size: 1rem;
                             font-weight: 500;
-                            color: rgb(118, 187, 13);
+                            color: v.$light-green;
                             padding-left: 4px;
                         }
                         
@@ -30,7 +32,7 @@
                 }
 
                 .icon_card {
-                    background-color: rgb(2, 2, 222);
+                    background-color: v.$light-green;
                     width: 45px;
                     height: 45px;
                     border-radius: 5px;
@@ -49,11 +51,28 @@
     }
 
     .chart_bar {
-        margin-top: 20px;
-        width: 100%;
-        height: 500px;
+        margin-top: 30px;
+        height: 410px;
         display: flex;
         align-items: center;
         justify-content: center;
+        background-color: #fff;
+        border-radius: 8px;
+        canvas {
+            padding: 30px;
+        }
+    }
+
+    .box_item {
+        background-color: #fff;
+        padding: 15px 20px;
+        border-radius: 8px;
+
+        .title_box {
+            font-size: 1.2rem;
+            color: v.$gray;
+            font-weight: normal;
+            margin-bottom: 20px;
+        }
     }
 }
