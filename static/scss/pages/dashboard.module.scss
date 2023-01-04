@@ -4,75 +4,13 @@
     padding-inline: 20px;
     .list_card {
         margin: 0 20px;
-        .card_item {
-            .card_body {
-                display: flex;
-                align-items: center;
-                flex-direction: row;
-                flex-wrap: nowrap;
-                justify-content: space-between;
-
-                .content_card {
-                    h4 {
-                        font-size: 1.1rem;
-                        color: v.$gray;
-                        font-weight: normal;
-                    }
-                    h5 {
-                        font-size: 1.6rem;
-                        font-weight: bold;
-                        span {
-                            font-size: 1rem;
-                            font-weight: 500;
-                            color: v.$light-green;
-                            padding-left: 4px;
-                        }
-                        
-                    }
-                }
-
-                .icon_card {
-                    background-color: v.$light-green;
-                    width: 45px;
-                    height: 45px;
-                    border-radius: 5px;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-
-                    svg {
-                        width: 20px;
-                        height: 20px;
-                        fill: #fff;
-                    }
-                }
-            }
-        }
     }
 
-    .chart_bar {
-        margin-top: 30px;
-        height: 410px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: #fff;
-        border-radius: 8px;
-        canvas {
-            padding: 30px;
-        }
-    }
-
-    .box_item {
-        background-color: #fff;
-        padding: 15px 20px;
-        border-radius: 8px;
-
-        .title_box {
-            font-size: 1.2rem;
-            color: v.$gray;
-            font-weight: normal;
-            margin-bottom: 20px;
-        }
+    
+    .title_box {
+        font-size: 1.2rem;
+        color: v.$gray;
+        font-weight: normal;
+        margin-bottom: 20px;
     }
 }

@@ -181,3 +181,55 @@ p {
         background: v.$dark-green !important;
     }
 }
+
+.card-item {
+    .card-body {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+
+        .content-card {
+            h4 {
+                font-size: 1.1rem;
+                color: v.$gray;
+                font-weight: normal;
+            }
+            h5 {
+                font-size: 1.6rem;
+                font-weight: bold;
+                span {
+                    font-size: 1rem;
+                    font-weight: 500;
+                    color: v.$light-green;
+                    padding-left: 4px;
+                }
+                
+            }
+        }
+
+        .icon-card {
+            background-color: v.$light-green;
+            width: 45px;
+            height: 45px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+                width: 20px;
+                height: 20px;
+                fill: #fff;
+            }
+        }
+    }
+}
+
+.box-item {
+    background-color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+
+}

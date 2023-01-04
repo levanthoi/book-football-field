@@ -483,3 +483,106 @@ export const dataBanks = [
     image: 'https://upload.wikimedia.org/wikipedia/commons/2/25/Logo_MB_new.png',
   },
 ];
+
+export const dataTimeline = [
+  {
+    id: 1,
+    title: 'Tài khoản nam08102003 đã đặt sân thành công.',
+    color: 'green',
+  },
+  {
+    id: 2,
+    title: 'Tài khoản abc1234 đã tạo thành công.',
+    color: 'green',
+  },
+  {
+    id: 3,
+    title: 'Tài khoản xxxx1234 đặt sân lỗi.',
+    color: 'red',
+  },
+  {
+    id: 4,
+    title: 'Tài khoản employee112 đã đăng tin tức.',
+    color: 'gray',
+  },
+  {
+    id: 5,
+    title: 'Tài khoản employee112 đã đăng tin tức.',
+    color: 'gray',
+  },
+  {
+    id: 6,
+    title: 'Tài khoản employee112 đã đăng tin tức.',
+    color: 'gray',
+  },
+  {
+    id: 7,
+    title: 'Tài khoản employee112 đã đăng tin tức.',
+    color: 'gray',
+  },
+];
+
+export const dataContract = [
+  {
+    key: '1',
+    name: 'Lê Đức Nam',
+    address: 'Nguyễn Trãi',
+    totalPitchs: '5',
+  },
+  {
+    key: '2',
+    name: 'Trần Đăng Trung',
+    address: 'Mỹ Đình',
+    totalPitchs: '7',
+  },
+  {
+    key: '3',
+    name: 'Phan Anh Phi',
+    address: 'Cầu Giấy',
+    totalPitchs: '7',
+  },
+  {
+    key: '4',
+    name: 'Lê Như Nam',
+    address: 'Kim Giang',
+    totalPitchs: '4',
+  },
+  {
+    key: '5',
+    name: 'Lê Văn Thời',
+    address: 'Tây Sơn',
+    totalPitchs: '6',
+  },
+];
+
+export const columns = [
+  {
+    title: 'Tên chủ sân',
+    dataIndex: 'name',
+    key: 'name',
+    render: (text) => <a href="/admin/dashboard">{text}</a>,
+  },
+  {
+    title: 'Địa chỉ sân',
+    dataIndex: 'address',
+    key: 'address',
+  },
+  {
+    title: 'Số lượng sân',
+    dataIndex: 'totalPitchs',
+    key: 'totalPitchs',
+  },
+];
+
+export const colors = {
+  purple: {
+    default: 'rgba(149, 76, 233, 1)',
+    half: 'rgba(149, 76, 233, 0.5)',
+    quarter: 'rgba(149, 76, 233, 0.25)',
+    zero: 'rgba(149, 76, 233, 0)',
+  },
+  indigo: {
+    default: 'rgba(80, 102, 120, 1)',
+    quarter: 'rgba(80, 102, 120, 0.25)',
+  },
+};
