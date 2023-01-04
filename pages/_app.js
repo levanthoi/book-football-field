@@ -1,13 +1,14 @@
-import Router from 'next/router';
-import NProgress from 'nprogress';
-import 'static/scss/partials/reset.scss';
-import 'static/scss/css/bootstrap.css';
-import 'static/scss/global.scss';
-import 'static/scss/css/datepicker.css';
-import withDva from 'utils/withDva';
 import models from 'models';
 import App from 'next/app';
+import Router from 'next/router';
+import NProgress from 'nprogress';
 import { Provider } from 'react-redux';
+import 'static/scss/css/bootstrap.css';
+import 'static/scss/css/datepicker.css';
+// import 'static/scss/css/draft.css';
+import 'static/scss/global.scss';
+import 'static/scss/partials/reset.scss';
+import withDva from 'utils/withDva';
 
 Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
