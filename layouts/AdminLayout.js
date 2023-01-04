@@ -88,6 +88,8 @@ function AdminLayout({ title, children, breadName }) {
     <React.Fragment>
       <Head>
         <title>{title}</title>
+        {/* <link rel="stylesheet" href="static/scss/css/draft.css" /> */}
+        {/* <script src="static/js/draft.js" type="text/javascript" defer /> */}
       </Head>
       <Layout className={styles.layout_admin}>
         <Sider trigger={null} collapsible width={250}>
@@ -124,7 +126,7 @@ function AdminLayout({ title, children, breadName }) {
               </Col>
             </Row>
           </Header>
-          <Content>{children}</Content>
+          <Content style={{ padding: '0 20px' }}>{children}</Content>
           <Footer>
             <div className={styles.copyright}>
               <p>Website được làm bởi nhóm 5 anh em siêu nhân</p>
