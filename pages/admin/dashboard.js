@@ -37,7 +37,7 @@ function Dashboard() {
     datasets: [
       {
         backgroundColor: '#85C240',
-        label: 'Số lượng người dùng hoạt động',
+        label: 'Số lượt đặt sân',
         data: weightBar,
         fill: true,
         borderWidth: 2,

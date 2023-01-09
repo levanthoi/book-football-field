@@ -76,11 +76,7 @@ function AdminLayout({ title, children, breadName }) {
     const urlCurrent = router.pathname.slice(1);
     const urlSlug = e.key;
     if (urlSlug !== urlCurrent) {
-      if (urlSlug === 'logout') {
-        console.log('Logout Success');
-      } else {
-        router.push(`${urlSlug}`);
-      }
+      router.push(`${urlSlug}`);
     }
   };
 
@@ -92,7 +88,12 @@ function AdminLayout({ title, children, breadName }) {
         {/* <script src="static/js/draft.js" type="text/javascript" defer /> */}
       </Head>
       <Layout className={styles.layout_admin}>
-        <Sider trigger={null} collapsible width={250}>
+        <Sider
+          trigger={null}
+          collapsible
+          width={250}
+          style={{ position: 'fixed', backgroundColor: '#fff', zIndex: '1000', height: '100%' }}
+        >
           <Menu
             onClick={handleClick}
             mode="inline"
@@ -104,7 +105,7 @@ function AdminLayout({ title, children, breadName }) {
             items={adminMenu}
           />
         </Sider>
-        <Layout>
+        <Layout style={{ marginLeft: '250px' }}>
           <Header className={styles.header_admin}>
             <Row align="middle">
               <Col span={12}>

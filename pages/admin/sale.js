@@ -99,7 +99,14 @@ function Sale() {
           <Button type="primary" style={{ margin: '0 5px' }}>
             Xem
           </Button>
-          <Button danger style={{ margin: '0 5px' }}>
+          <Button
+            style={{
+              margin: '0 5px',
+              background: '#ff4d4f',
+              color: '#fff',
+              borderColor: '#ff4d4f',
+            }}
+          >
             Xóa
           </Button>
           <Button style={{ margin: '0 5px' }}>Sửa</Button>
@@ -134,6 +141,93 @@ function Sale() {
       name: 'nam08102003',
       pitch: 'Sân bóng thượng đình',
       price: '200000',
+    },
+  ];
+
+  const columnsSale = [
+    {
+      title: 'Tên sân',
+      dataIndex: 'title',
+      key: 'title',
+      width: 350,
+      render: (text) => <a href="/admin/dashboard">{text}</a>,
+    },
+    {
+      title: 'Địa chỉ',
+      dataIndex: 'address',
+      key: 'address',
+    },
+    {
+      title: 'Số lượt đặt sân',
+      dataIndex: 'countOffer',
+      key: 'countOffer',
+    },
+    {
+      title: 'Tổng doanh thu',
+      dataIndex: 'sales',
+      key: 'sales',
+    },
+    {
+      title: '',
+      dataIndex: 'options',
+      key: 'options',
+      render: () => (
+        <div>
+          <Button type="primary" style={{ margin: '0 5px' }}>
+            Xem
+          </Button>
+          <Button
+            style={{
+              margin: '0 5px',
+              background: '#ff4d4f',
+              color: '#fff',
+              borderColor: '#ff4d4f',
+            }}
+          >
+            Xóa
+          </Button>
+          <Button style={{ margin: '0 5px' }}>Sửa</Button>
+        </div>
+      ),
+    },
+  ];
+
+  const dataSales = [
+    {
+      title: 'Sân bóng Thượng Đình',
+      address: 'Thượng Đình Thanh Xuân',
+      countOffer: '50',
+      sales: '30500000',
+    },
+    {
+      title: 'Sân bóng Thượng Đình',
+      address: 'Thượng Đình Thanh Xuân',
+      countOffer: '50',
+      sales: '30500000',
+    },
+    {
+      title: 'Sân bóng Thượng Đình',
+      address: 'Thượng Đình Thanh Xuân',
+      countOffer: '50',
+      sales: '30500000',
+    },
+    {
+      title: 'Sân bóng Thượng Đình',
+      address: 'Thượng Đình Thanh Xuân',
+      countOffer: '50',
+      sales: '30500000',
+    },
+    {
+      title: 'Sân bóng Thượng Đình',
+      address: 'Thượng Đình Thanh Xuân',
+      countOffer: '50',
+      sales: '30500000',
+    },
+    {
+      title: 'Sân bóng Thượng Đình',
+      address: 'Thượng Đình Thanh Xuân',
+      countOffer: '50',
+      sales: '30500000',
     },
   ];
 
@@ -339,6 +433,14 @@ function Sale() {
                   />
                 </Col>
               </Row>
+            </div>
+          </Col>
+        </Row>
+        <Row style={{ marginTop: '20px' }}>
+          <Col span={24}>
+            <div className="box-item">
+              <h4>Doanh thu các sân</h4>
+              <Table columns={columnsSale} dataSource={dataSales} size="large" />
             </div>
           </Col>
         </Row>
