@@ -1,6 +1,7 @@
 import { DeleteOutlined, InboxOutlined, UploadOutlined } from '@ant-design/icons';
 import {
   Button,
+  DatePicker,
   Divider,
   Form,
   Input,
@@ -10,23 +11,48 @@ import {
   Select,
   Space,
   Table,
+  TimePicker,
+  Tooltip,
+  Typography,
   Upload,
 } from 'antd';
-// import { EditorState } from 'draft-js';
+import dynamic from 'next/dynamic';
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import regexHelper from 'utils/regexHelper';
+import { formatNumber } from 'utils/utils';
 
-// import { Editor } from 'react-draft-wysiwyg';
+const MyEditor = dynamic(() => import('component/Global/MyEditor'), {
+  ssr: false,
+  loading: () => null,
+});
+// const NumericInput = dynamic(() => import('component/Global/NumericInput'), {
+//   ssr: true,
+//   loading: () => null,
+// });
 
+const format = 'HH:mm';
 const AddPitchModal = ({ toggleOpen, isOpen }) => {
-  // const [editorState, setEditorState] = useState(EditorState.createEmpty());
+  const [form] = Form.useForm();
+  const dispatch = useDispatch();
+  const [pitch, setPitch] = useState('7vs7');
+  const [amoutPitch, setAmoutPitch] = useState('');
+  const [price, setPrice] = useState('');
+  const { isNumber } = regexHelper;
 
-  // const onEditorStateChange = () => {
-  //   console.log('editorState');
+  const data = useSelector((state) => state.pitch.data);
+  // dispatch({
+  //   type: 'pitch/detail',
+  //   payload: {},
+  // });
+
+  // const rules = {
+  //   required: true,
+  //   message: null,
   // };
-  const rules = {
-    required: true,
-    message: null,
-  };
+
+  // title price VND
+  const title = <span>{formatNumber(price)} VNĐ</span>;
 
   // Props Slideshow
   const propsSlideshow = {
@@ -49,20 +75,79 @@ const AddPitchModal = ({ toggleOpen, isOpen }) => {
     },
   };
 
+  // render header table
+  const headerTable = () => {
+    return (
+      <Space>
+        <Typography.Text strong>
+          Loại sân:&nbsp;{pitch} | SL: {amoutPitch}&nbsp;sân
+        </Typography.Text>
+        <Button type="primary">Thêm khung giờ</Button>
+      </Space>
+    );
+  };
+
+  const handleChangePitch = (value) => {
+    // console.log(`selected ${value}`);
+    setPitch(value);
+  };
+
+  //
+  const handleChangeInput = (event, setNewState) => {
+    // console.log(`selected ${value}`);
+    const { value } = event.target;
+    const reg = isNumber;
+    if ((!Number.isNaN(value) && reg.test(value)) || value === '' || value === '-') {
+      setNewState(value);
+    }
+  };
+
+  // thêm số lượng sân bóng
+  const handleAddPitch = () => {
+    const dataPitch = { pitch, amoutPitch };
+    dispatch({
+      type: 'pitch/addPitch',
+      payload: { dataPitch },
+    });
+    setAmoutPitch('');
+    console.log('handleAddPitch', data);
+  };
+
+  // tạo sân bóng
+  const handleCreatePitch = () => {
+    console.log('handleCreatePitch');
+  };
+
   // Column Table
   const columns = [
     {
       title: 'Khung giờ',
       dataIndex: 'hour',
+      render: () => <TimePicker.RangePicker minuteStep={30} format={format} />,
     },
     {
       title: 'Ngày trong tuần',
       dataIndex: 'day',
+      render: () => <DatePicker.RangePicker />,
     },
     {
       title: 'Giá',
       dataIndex: 'price',
       align: 'right',
+      render: () => (
+        <Tooltip
+          trigger={['focus']}
+          title={title}
+          placement="topLeft"
+          overlayClassName="numeric-input"
+        >
+          <Input
+            placeholder="Nhập giá"
+            value={price}
+            onChange={(event) => handleChangeInput(event, setPrice)}
+          />
+        </Tooltip>
+      ),
     },
     {
       title: 'Xóa',
@@ -79,7 +164,7 @@ const AddPitchModal = ({ toggleOpen, isOpen }) => {
   ];
 
   // Data Table
-  const data = [
+  const dataSource = [
     {
       key: '1',
       hour: 'sa',
@@ -87,52 +172,24 @@ const AddPitchModal = ({ toggleOpen, isOpen }) => {
       price: '30300',
     },
   ];
+
   return (
     <Modal
       title="Thêm sân mới"
       open={isOpen}
       onCancel={toggleOpen}
-      width={700}
+      width={850}
       okText="Tạo mới"
       cancelText="Quay lại"
     >
-      <Form labelCol={{ span: 4 }}>
+      <Form labelCol={{ span: 4 }} form={form} onFinish={handleCreatePitch}>
         <Divider orientation="left">Thông tin cơ bản</Divider>
         <Form.Item label="Tên sân" labelAlign="left">
           <Input placeholder="Tên sân bóng" />
         </Form.Item>
         <Form.Item label="Giới thiệu sân" labelAlign="left">
-          {/* <Editor
-              editorState={editorState}
-              // wrapperClassName="wrapper-class"
-              // editorClassName="editor-class"
-              // toolbarClassName="toolbar-class"
-              toolbar={{
-                options: [
-                  'inline',
-                  'blockType',
-                  'fontSize',
-                  'fontFamily',
-                  'list',
-                  'textAlign',
-                  'colorPicker',
-                  'link',
-                ],
-                fontFamily: {
-                  options: [
-                    'Arial',
-                    'Georgia',
-                    'Impact',
-                    'Tahoma',
-                    'Times New Roman',
-                    'Verdana',
-                    'Roboto',
-                  ],
-                },
-              }}
-              onEditorStateChange={() => setEditorState(editorState)}
-            /> */}
-          <Input.TextArea rows={4} placeholder="Giới thiệu, mô tả về sân bóng" />
+          <MyEditor />
+          {/* <Input.TextArea rows={4} placeholder="Giới thiệu, mô tả về sân bóng" /> */}
         </Form.Item>
         <Divider orientation="left">Địa chỉ</Divider>
         <Form.Item label="Quận/Huyện" labelAlign="left">
@@ -184,18 +241,37 @@ const AddPitchModal = ({ toggleOpen, isOpen }) => {
         <Divider orientation="left" orientationMargin="0">
           Giá thuê sân/trận
         </Divider>
-        <Form.Item>
-          <Space>
-            <Select>
+        {/* <Form.Item> */}
+        <Space>
+          <Form.Item>
+            <Select defaultValue="7vs7" onChange={handleChangePitch}>
               <Select.Option value="5vs5">5 vs 5</Select.Option>
               <Select.Option value="7vs7">7 vs 7</Select.Option>
               <Select.Option value="11vs11">11 vs 11</Select.Option>
             </Select>
-            <Input placeholder="Số lượng" />
-            <Button type="primary">Thêm</Button>
-          </Space>
-        </Form.Item>
-        <Table columns={columns} dataSource={data} bordered title={() => 'Loại sân ...'} />
+          </Form.Item>
+          <Form.Item
+            rules={[
+              {
+                required: true,
+                message: 'Vui lòng nhập số lượng sân',
+              },
+            ]}
+          >
+            <Input
+              placeholder="Số lượng"
+              value={amoutPitch}
+              onChange={(event) => handleChangeInput(event, setAmoutPitch)}
+            />
+          </Form.Item>
+          <Form.Item>
+            <Button type="primary" onClick={handleAddPitch}>
+              Thêm
+            </Button>
+          </Form.Item>
+        </Space>
+        {/* </Form.Item> */}
+        <Table columns={columns} dataSource={dataSource} bordered title={() => headerTable()} />
       </Form>
     </Modal>
   );
