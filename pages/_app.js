@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import 'static/scss/css/bootstrap.css';
 import 'static/scss/css/datepicker.css';
 // import 'static/scss/css/draft.css';
+import 'static/scss/css/quill.snow.css';
 import 'static/scss/global.scss';
 import 'static/scss/partials/reset.scss';
 import withDva from 'utils/withDva';

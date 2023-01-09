@@ -4,6 +4,7 @@ import {
   PlusSquareOutlined,
   StopOutlined,
   TrophyOutlined,
+  UnorderedListOutlined,
 } from '@ant-design/icons';
 import { Button, Col, Image, Row, Space, Table, Tabs } from 'antd';
 import useModal from 'hooks/useModal';
@@ -18,8 +19,9 @@ const AddPitchModal = dynamic(() => import('component/ModalPage/AddPitchModal'),
 });
 
 function Pitchs() {
-  const { TabPane } = Tabs;
+  // const { TabPane } = Tabs;
   const { isOpen, toggleOpen } = useModal();
+
   const data = [
     {
       key: '0',
@@ -170,9 +172,40 @@ function Pitchs() {
     },
   ];
 
+  // items props Tabs Component
+  const items = [
+    {
+      key: '1',
+      label: (
+        <span>
+          <UnorderedListOutlined />
+          Yêu cầu đặt sân
+        </span>
+      ),
+      children: <Table columns={columns1} dataSource={data} />,
+    },
+    {
+      key: '2',
+      label: (
+        <span>
+          <UnorderedListOutlined />
+          Danh sách sân
+        </span>
+      ),
+      children: (
+        <Space direction="vertical" style={{ width: '100%' }}>
+          <Button type="primary" icon={<PlusSquareOutlined />} onClick={toggleOpen}>
+            Thêm sân mới
+          </Button>
+          <Table columns={columns2} dataSource={data2} />
+        </Space>
+      ),
+    },
+  ];
+
   return (
     <AdminLayout title="Sân bóng" breadName="Sân bóng">
-      <Tabs defaultActiveKey="1">
+      {/* <Tabs defaultActiveKey="1">
         <TabPane tab="Yêu cầu đặt sân" key="1">
           <Table columns={columns1} dataSource={data} />
         </TabPane>
@@ -184,7 +217,8 @@ function Pitchs() {
             <Table columns={columns2} dataSource={data2} />
           </Space>
         </TabPane>
-      </Tabs>
+      </Tabs> */}
+      <Tabs defaultActiveKey="1" items={items} />
       <AddPitchModal isOpen={isOpen} toggleOpen={toggleOpen} />
     </AdminLayout>
   );

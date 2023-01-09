@@ -196,16 +196,18 @@ p {
                 color: v.$gray;
                 font-weight: normal;
             }
+
             h5 {
                 font-size: 1.6rem;
                 font-weight: bold;
+
                 span {
                     font-size: 1rem;
                     font-weight: 500;
                     color: v.$light-green;
                     padding-left: 4px;
                 }
-                
+
             }
         }
 
@@ -232,4 +234,20 @@ p {
     padding: 15px 20px;
     border-radius: 8px;
 
+}
+
+//Use Css MyEditor
+.ql-container {
+    min-height: 8em;
+    border-bottom-left-radius: 0.5em;
+    border-bottom-right-radius: 0.5em;
+    background: #fefcfc;
+    font-size: 14px;
+}
+
+.ql-toolbar {
+    background: #eaecec;
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+    border-bottom: none;
 }
